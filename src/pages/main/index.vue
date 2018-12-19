@@ -18,6 +18,9 @@
               管理员 三百<i class="el-icon-arrow-down el-icon--right"></i>
             </el-button>
             <el-dropdown-menu slot="dropdown">
+              <el-dropdown-item>
+                <div class="dropdown-item " @click="navTo('updatepwd')">修改密码</div>
+              </el-dropdown-item>
               <el-dropdown-item >
                 <div class="dropdown-item fo-danger" @click="logout()">退出登录</div>
               </el-dropdown-item>

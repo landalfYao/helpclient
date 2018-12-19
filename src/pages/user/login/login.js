@@ -43,8 +43,15 @@ let login = {
             sessionStorage.setItem('userInfo',res.data)
             sessionStorage.setItem('username',res.data.username)
             sessionStorage.setItem('pwd',res.data.pwd)
+            sessionStorage.setItem('dtype',res.data.dtype)
             that.$router.push({path:'/'})
           }else{
+            sessionStorage.removeItem('token')
+            sessionStorage.removeItem('uid')
+            sessionStorage.removeItem('userInfo')
+            sessionStorage.removeItem('username')
+            sessionStorage.removeItem('pwd')
+            sessionStorage.removeItem('dtype')
             that.$message({
               type: 'error',
               message: res.msg

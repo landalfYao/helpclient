@@ -60,10 +60,6 @@ const yzy = {
         if(res.statusCode == 200){
           cb(body)
         }else{
-          this.$message({
-            type: 'success',
-            message: res.statusCode
-          })
           console.log(res.statusCode)
         }
     })

@@ -10,7 +10,8 @@ let main = {
       nav:[],
       defaultMeun: '',
       defaultActive:'',
-      linkName:''
+      linkName:'',
+      dtype:-1
     }
   },
   watch:{
@@ -31,10 +32,14 @@ let main = {
         that.innerHeight = window.innerHeight
       }
     },
+    navTo(path){
+      this.$router.push({path:path})
+    },
     //初始化用户
     initUser(){
       if(sessionStorage.getItem('token')){
         this.initNav()
+        this.dtype = sessionStorage.getItem('dtype')
       }else{
         this.$router.push({path:'/login'})
       }
@@ -55,6 +60,12 @@ let main = {
     },
 
     logout () {
+      sessionStorage.removeItem('token')
+      sessionStorage.removeItem('uid')
+      sessionStorage.removeItem('userInfo')
+      sessionStorage.removeItem('username')
+      sessionStorage.removeItem('pwd')
+      sessionStorage.removeItem('dtype')
       this.$router.push({path:'/login'})
     },
     navSelect(e){
