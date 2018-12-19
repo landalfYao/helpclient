@@ -33,12 +33,11 @@ let main = {
     },
     //初始化用户
     initUser(){
-      this.initNav()
-      // if(sessionStorage.getItem('token')){
-      //   this.initNav()
-      // }else{
-      //   this.$router.push({path:'/login'})
-      // }
+      if(sessionStorage.getItem('token')){
+        this.initNav()
+      }else{
+        this.$router.push({path:'/login'})
+      }
     },
     //初始化导航
     initNav(){
@@ -46,7 +45,7 @@ let main = {
       this.defaultMeun = this.topNav[0].path
       this.nav = nav.item1
       this.defaultActive = this.nav[0].sub[0].path
-      console.log(this.defaultActive )
+      this.$router.push({path:this.nav[0].sub[0].path})
     },
 
     selectTopNav(e){

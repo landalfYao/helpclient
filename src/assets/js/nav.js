@@ -7,9 +7,9 @@ const nav = {
     {label:'总览',sub:[
       {label:'平台总览',path:'/overview',icon:'ios-podium-outline',}
     ]},
-    {label:'课程表',sub:[
-      {label:'课程表',path:'/course',icon:'ios-calendar-outline'},
-      {label:'排课',path:'/',icon:'ios-create-outline'}
+    {label:'代理商',sub:[
+      {label:'代理商列表',path:'/course',icon:'ios-calendar-outline'},
+      {label:'新增代理商',path:'/agent_edit',icon:'ios-create-outline'}
     ]},
 
     {label:'课程管理',sub:[

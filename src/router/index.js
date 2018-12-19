@@ -11,8 +11,7 @@ import authList from '../pages/auth/list/list.vue'
 //平台总览
 import overview from '../pages/overview/overview.vue'
 
-//课程表
-import course from '../pages/course/course.vue'
+import agentEdit from '../pages/agent/agent_edit.vue'
 
 Vue.use(Router)
 
@@ -23,7 +22,7 @@ export default new Router({
       { path:'/user/list',name:'用户列表', component: userList},
       { path:'/auth/list',name:'权限列表', component: authList},
       { path:'/overview',name:'平台总览', component: overview},
-      { path:'/course',name:'课程表', component: course},
+      { path:'/agent_edit',name:'新增代理商', component: agentEdit}
     ] }
   ]
 })

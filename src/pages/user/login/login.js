@@ -27,30 +27,30 @@ let login = {
         })
       } else {
         that.$router.push({path:'/'})
-        // this.loading = true
-        // this.yzy.http('user/login','POST',{
-        //   username: this.formData.username,
-        //   password: this.yzy.encrypt(this.formData.password)
-        // },function(res){
-        //   that.loading = false
-        //   if(res.code == 1){
-        //     that.$message({
-        //       type: 'success',
-        //       message: res.msg
-        //     })
-        //     sessionStorage.setItem('token',res.token)
-        //     sessionStorage.setItem('uid',res.data.pk_id)
-        //     sessionStorage.setItem('userInfo',res.data)
-        //     sessionStorage.setItem('username',res.data.username)
-        //     sessionStorage.setItem('pwd',res.data.pwd)
-        //     that.$router.push({path:'/'})
-        //   }else{
-        //     that.$message({
-        //       type: 'error',
-        //       message: res.msg
-        //     })
-        //   }
-        // })
+        this.loading = true
+        this.yzy.http('user/login','POST',{
+          username: this.formData.username,
+          password: this.yzy.encrypt(this.formData.password)
+        },function(res){
+          that.loading = false
+          if(res.code == 1){
+            that.$message({
+              type: 'success',
+              message: res.msg
+            })
+            sessionStorage.setItem('token',res.token)
+            sessionStorage.setItem('uid',res.data.pk_id)
+            sessionStorage.setItem('userInfo',res.data)
+            sessionStorage.setItem('username',res.data.username)
+            sessionStorage.setItem('pwd',res.data.pwd)
+            that.$router.push({path:'/'})
+          }else{
+            that.$message({
+              type: 'error',
+              message: res.msg
+            })
+          }
+        })
       }
     }
   }
