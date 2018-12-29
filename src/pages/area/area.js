@@ -1,47 +1,50 @@
-let that ;
+let that;
 let list = {
-  data ( ) {
+  data() {
     return {
-      multipleSelection:[],
-      query:{
-        wheres:'',
-        sorts:'atype asc,sort asc',
-        pageIndex:1,
-        pageSize:10
+      multipleSelection: [],
+      query: {
+        wheres: '',
+        sorts: 'atype asc,sort asc',
+        pageIndex: 1,
+        pageSize: 10
       },
-      wheres:[],
-      pageSize:this.yzy.pageSize,
-      total:0,
+      wheres: [],
+      pageSize: this.yzy.pageSize,
+      total: 0,
       tableData: [],
-      searchList:this.yzy.initFilterSearch(['ID','地区名','地区类型'],['pk_id','name','atype'])
+      searchList: this.yzy.initFilterSearch(['ID', '地区名', '地区类型'], ['pk_id', 'name', 'atype'])
     }
   },
-  mounted(){
+  mounted() {
     that = this;
     that.getList()
   },
-  methods:{
-    navTo(path,row){
-      this.$router.push({path:path,query:row})
+  methods: {
+    navTo(path, row) {
+      this.$router.push({
+        path: path,
+        query: row
+      })
     },
-    getList(){
+    getList() {
       let sq = ''
-      for(let i in this.wheres){
-        if(this.wheres[i].value && this.wheres[i].value!= ''){
+      for (let i in this.wheres) {
+        if (this.wheres[i].value && this.wheres[i].value != '') {
           sq += this.wheres[i].value + ' and '
         }
       }
-      if(sq != ''){
-        this.query.wheres = sq.substring(0,sq.length-4)
-      }else{
+      if (sq != '') {
+        this.query.wheres = sq.substring(0, sq.length - 4)
+      } else {
         this.query.wheres = ''
       }
-      this.yzy.post('area/get',this.query,function(res){
-        if(res.code == 1){
+      this.yzy.post('area/get', this.query, function (res) {
+        if (res.code == 1) {
 
           that.tableData = res.data.list
           that.total = res.data.total
-        }else{
+        } else {
           that.$message({
             type: 'error',
             message: res.msg
@@ -50,22 +53,22 @@ let list = {
       })
     },
 
-    filterIds(){
+    filterIds() {
       let arr = []
-      for(let i in this.multipleSelection){
+      for (let i in this.multipleSelection) {
         arr.push(this.multipleSelection[i].pk_id)
       }
       return arr
     },
-    update(url,data){
-      this.yzy.post(url,data,function(res){
-        if(res.code == 1){
+    update(url, data) {
+      this.yzy.post(url, data, function (res) {
+        if (res.code == 1) {
           that.$message({
             type: 'success',
             message: res.msg
           })
           that.getList()
-        }else{
+        } else {
           that.$message({
             type: 'error',
             message: res.msg
@@ -73,15 +76,15 @@ let list = {
         }
       })
     },
-    searchInput(index){
-      this.wheres = this.yzy.filterSearch(this.searchList[index],this.wheres)
+    searchInput(index) {
+      this.wheres = this.yzy.filterSearch(this.searchList[index], this.wheres)
     },
-    search(){
+    search() {
       that.getList()
     },
-    clear(){
-      for(let i in this.wheres){
-        if(this.wheres[i].label != 'user_state'){
+    clear() {
+      for (let i in this.wheres) {
+        if (this.wheres[i].label != 'user_state') {
           this.wheres[i].value = ''
         }
       }
@@ -90,10 +93,10 @@ let list = {
     handleSelectionChange(val) {
       this.multipleSelection = val;
     },
-    handleSizeChange(e){
+    handleSizeChange(e) {
       this.getList()
     },
-    handleCurrentChange(e){
+    handleCurrentChange(e) {
       this.query.pageIndex = e
       this.getList()
     },

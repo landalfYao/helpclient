@@ -1,44 +1,44 @@
-let that ;
+let that;
 let list = {
-  data ( ) {
+  data() {
     return {
-      multipleSelection:[],
-      query:{
-        wheres:'',
-        sorts:'update_time desc,create_time desc',
-        pageIndex:1,
-        pageSize:10
+      multipleSelection: [],
+      query: {
+        wheres: '',
+        sorts: 'create_time desc',
+        pageIndex: 1,
+        pageSize: 10
       },
-      wheres:[],
-      pageSize:this.yzy.pageSize,
-      total:0,
+      wheres: [],
+      pageSize: this.yzy.pageSize,
+      total: 0,
       tableData: [],
-      searchList:this.yzy.initFilterSearch(['ID','用户名','用户类型','手机号'],['pk_id','username','dtype','phone'])
+      searchList: this.yzy.initFilterSearch(['ID', '用户名', '用户类型', '手机号'], ['pk_id', 'username', 'dtype', 'phone'])
     }
   },
-  mounted(){
+  mounted() {
     that = this;
     that.getList()
   },
-  methods:{
-    getList(){
+  methods: {
+    getList() {
       let sq = ''
-      for(let i in this.wheres){
-        if(this.wheres[i].value && this.wheres[i].value!= ''){
+      for (let i in this.wheres) {
+        if (this.wheres[i].value && this.wheres[i].value != '') {
           sq += this.wheres[i].value + ' and '
         }
       }
-      if(sq != ''){
-        this.query.wheres = sq.substring(0,sq.length-4)
-      }else{
+      if (sq != '') {
+        this.query.wheres = sq.substring(0, sq.length - 4)
+      } else {
         this.query.wheres = ''
       }
-      this.yzy.post('user/get',this.query,function(res){
-        if(res.code == 1){
+      this.yzy.post('user/get', this.query, function (res) {
+        if (res.code == 1) {
 
           that.tableData = res.data.list
           that.total = res.data.total
-        }else{
+        } else {
           that.$message({
             type: 'error',
             message: res.msg
@@ -46,73 +46,80 @@ let list = {
         }
       })
     },
-    filterChange(e){
+    filterChange(e) {
       let temp = -1
       let arr = this.wheres
       let resArr = e['user_state']
 
-      for(let i in resArr){
-        if(resArr[i].indexOf("'")<0){
-          resArr[i] = "'"+resArr[i]+"'"
+      for (let i in resArr) {
+        if (resArr[i].indexOf("'") < 0) {
+          resArr[i] = "'" + resArr[i] + "'"
         }
       }
 
-      let sq = 'user_state in ('+resArr+')'
-      for(let i in arr){
-        if(arr[i].label == 'user_state'){
+      let sq = 'user_state in (' + resArr + ')'
+      for (let i in arr) {
+        if (arr[i].label == 'user_state') {
           temp = i
         }
       }
 
-      if(resArr.length == 0){
-        if(temp != -1){
-          this.wheres.splice(temp,1)
+      if (resArr.length == 0) {
+        if (temp != -1) {
+          this.wheres.splice(temp, 1)
         }
-      }else{
-        if(temp == -1){
-          this.wheres.push({label:'user_state',value:sq})
-        }else{
+      } else {
+        if (temp == -1) {
+          this.wheres.push({
+            label: 'user_state',
+            value: sq
+          })
+        } else {
           this.wheres[temp].value = sq
         }
       }
 
       this.getList()
     },
-    changeUserState(state){
+    changeUserState(state) {
 
-      if(state == 'disable'){
+      if (state == 'disable') {
         this.$confirm('此操作将使用户被迫下线, 是否继续?', '提示', {
           confirmButtonText: '继续',
           cancelButtonText: '取消',
           type: 'warning'
         }).then(() => {
-          that.update('user/state/'+state,{ids:that.filterIds().toString()})
+          that.update('user/state/' + state, {
+            ids: that.filterIds().toString()
+          })
         }).catch(() => {
           that.$message({
             type: 'info',
             message: '已取消删除'
           });
         });
-      }else{
-        that.update('user/state/'+state,{ids:that.filterIds().toString()})
+      } else {
+        that.update('user/state/' + state, {
+          ids: that.filterIds().toString()
+        })
       }
     },
-    filterIds(){
+    filterIds() {
       let arr = []
-      for(let i in this.multipleSelection){
+      for (let i in this.multipleSelection) {
         arr.push(this.multipleSelection[i].pk_id)
       }
       return arr
     },
-    update(url,data){
-      this.yzy.post(url,data,function(res){
-        if(res.code == 1){
+    update(url, data) {
+      this.yzy.post(url, data, function (res) {
+        if (res.code == 1) {
           that.$message({
             type: 'success',
             message: res.msg
           })
           that.getList()
-        }else{
+        } else {
           that.$message({
             type: 'error',
             message: res.msg
@@ -120,15 +127,15 @@ let list = {
         }
       })
     },
-    searchInput(index){
-      this.wheres = this.yzy.filterSearch(this.searchList[index],this.wheres)
+    searchInput(index) {
+      this.wheres = this.yzy.filterSearch(this.searchList[index], this.wheres)
     },
-    search(){
+    search() {
       that.getList()
     },
-    clear(){
-      for(let i in this.wheres){
-        if(this.wheres[i].label != 'user_state'){
+    clear() {
+      for (let i in this.wheres) {
+        if (this.wheres[i].label != 'user_state') {
           this.wheres[i].value = ''
         }
       }
@@ -137,10 +144,10 @@ let list = {
     handleSelectionChange(val) {
       this.multipleSelection = val;
     },
-    handleSizeChange(e){
+    handleSizeChange(e) {
       this.getList()
     },
-    handleCurrentChange(e){
+    handleCurrentChange(e) {
       this.query.pageIndex = e
       this.getList()
     },
