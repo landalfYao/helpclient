@@ -27,9 +27,9 @@ let list = {
       }, {
         label: '上门维修'
       }, {
-        label: '代课'
+        label: '代替服务'
       }, {
-        label: '其他'
+        label: '其他帮助'
       }, ],
       loading: false
     }
