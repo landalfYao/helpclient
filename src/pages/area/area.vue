@@ -52,16 +52,6 @@
       <el-table-column prop="sort" label="序号"></el-table-column>
       <el-table-column prop="pk_id" label="ID"></el-table-column>
       <el-table-column prop="name" label="地区名"></el-table-column>
-      <!-- <el-table-column prop="agent_get" label="代理抽点" >
-        <template slot-scope="scope">
-          <span>{{(scope.row.agent_get * 100).toFixed(2)}}%</span>
-        </template>
-      </el-table-column>-->
-      <el-table-column label="平台抽点">
-        <template slot-scope="scope">
-          <span>{{(scope.row.p_get * 100).toFixed(2)}}%</span>
-        </template>
-      </el-table-column>
 
       <el-table-column label="类型" column-key="user_state">
         <template slot-scope="scope">

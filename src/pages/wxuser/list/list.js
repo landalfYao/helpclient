@@ -5,7 +5,7 @@ let list = {
       multipleSelection: [],
       query: {
         wheres: '',
-        sorts: 'create_datetime desc',
+        sorts: 'create_time desc',
         pageIndex: 1,
         pageSize: 10
       },
@@ -13,7 +13,7 @@ let list = {
       pageSize: this.yzy.pageSize,
       total: 0,
       tableData: [],
-      searchList: this.yzy.initFilterSearch(['ID', '用户名', '昵称', '手机号', '邮箱'], ['pk_id', 'username', 'nick_name', 'phone_number', 'email'])
+      searchList: this.yzy.initFilterSearch(['ID', '昵称', '手机号', '短号'], ['id', 'nick_name', 'phone', 'dphone'])
     }
   },
   mounted() {
@@ -33,11 +33,9 @@ let list = {
       } else {
         this.query.wheres = ''
       }
-      this.yzy.post('user/get', this.query, function (res) {
+      this.yzy.post('wx/user/get', this.query, function (res) {
         if (res.code == 1) {
-          for (let i in res.data.list) {
-            res.data.list[i].update_datetime = new Date(res.data.list[i].update_datetime).toISOString().replace(/T/g, ' ').replace(/\.[\d]{3}Z/, '')
-          }
+
           that.tableData = res.data.list
           that.total = res.data.total
         } else {

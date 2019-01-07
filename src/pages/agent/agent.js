@@ -1,7 +1,10 @@
 let that;
 let list = {
+
   data() {
     return {
+      tempUid: '',
+      seevisable: false,
       multipleSelection: [],
       query: {
         wheres: '',
