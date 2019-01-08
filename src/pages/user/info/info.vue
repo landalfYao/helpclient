@@ -29,8 +29,6 @@
         border
         size="small"
         style="width: 100%;margin-top:15px"
-        @selection-change="handleSelectionChange"
-        @filter-change="filterChange"
       >
         <el-table-column prop="server_name" label="服务项"></el-table-column>
         <el-table-column prop="user_sy" label="用户收益">

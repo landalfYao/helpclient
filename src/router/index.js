@@ -22,6 +22,8 @@ import area_edit from '../pages/area/area_edit.vue'
 import server from '../pages/server/server.vue'
 import wxuserList from '../pages/wxuser/list/list.vue'
 
+import daiqu from '../pages/order/daiqu.vue'
+
 Vue.use(Router)
 
 export default new Router({
@@ -88,6 +90,11 @@ export default new Router({
           path: '/wxuser_list',
           name: '微信用户',
           component: wxuserList
+        },
+        {
+          path: '/daiqu',
+          name: '快递代取订单',
+          component: daiqu
         },
       ]
     }

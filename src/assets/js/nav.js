@@ -66,8 +66,8 @@ const nav = {
       label: '订单管理',
       dtype: -1,
       sub: [{
-        label: '订单列表',
-        path: '/',
+        label: '快递代取订单',
+        path: '/daiqu',
         icon: 'ios-podium-outline',
       }]
     },
