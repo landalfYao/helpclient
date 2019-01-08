@@ -6,106 +6,142 @@ const ivkey = Buffer.from('15464336451324535212156486623224', 'utf8').toString('
 const request = require("request");
 
 const yzy = {
-  systemName:'时乘优培后台管理系统',
-  NODE_API:'http://localhost:3000/api/',
+  systemName: '时乘优培后台管理系统',
+  NODE_API: 'http://localhost:3333/api/',
 
-  pageSize:[
-    {label:'每页10条',value:10},
-    {label:'每页20条',value:20},
-    {label:'每页30条',value:30},
-    {label:'每页50条',value:50},
-    {label:'每页100条',value:100},
-    {label:'每页200条',value:200},
-    {label:'每页300条',value:300},
-    {label:'每页500条',value:500},
-    {label:'每页1000条',value:1000},
-    {label:'每页10000条',value:10000}
+  pageSize: [{
+      label: '每页10条',
+      value: 10
+    },
+    {
+      label: '每页20条',
+      value: 20
+    },
+    {
+      label: '每页30条',
+      value: 30
+    },
+    {
+      label: '每页50条',
+      value: 50
+    },
+    {
+      label: '每页100条',
+      value: 100
+    },
+    {
+      label: '每页200条',
+      value: 200
+    },
+    {
+      label: '每页300条',
+      value: 300
+    },
+    {
+      label: '每页500条',
+      value: 500
+    },
+    {
+      label: '每页1000条',
+      value: 1000
+    },
+    {
+      label: '每页10000条',
+      value: 10000
+    }
   ],
   //初始化筛选内容
-  initFilterSearch(labels,keys){
+  initFilterSearch(labels, keys) {
     let _labels = labels
     let _keys = keys
     let arr = []
-    for(let i in _labels){
-      arr.push({label:_labels[i],key:_keys[i],value:''})
+    for (let i in _labels) {
+      arr.push({
+        label: _labels[i],
+        key: _keys[i],
+        value: ''
+      })
     }
     return arr
   },
   //筛选过滤器
-  filterSearch(data,wheres){
+  filterSearch(data, wheres) {
     let _data = data
     let _wheres = wheres
     let temp = -1
-      for(let i in _wheres){
-        if(_wheres[i].label == _data.key){
-          temp = i
-        }
+    for (let i in _wheres) {
+      if (_wheres[i].label == _data.key) {
+        temp = i
       }
-      if(temp == -1){
-        _wheres.push({label:_data.key,value:_data.key+' like "%'+_data.value+'%"'})
-      }else{
-        _wheres[temp].value = _data.key+' like "%'+_data.value+'%"'
-      }
-      return _wheres
+    }
+    if (temp == -1) {
+      _wheres.push({
+        label: _data.key,
+        value: _data.key + ' like "%' + _data.value + '%"'
+      })
+    } else {
+      _wheres[temp].value = _data.key + ' like "%' + _data.value + '%"'
+    }
+    return _wheres
   },
   //http请求
-  http (url, type, data,cb,headers){
+  http(url, type, data, cb, headers) {
     let options = {
-      url: this.NODE_API+url,
-      headers:headers,
-      method:type,
-      json:data
+      url: this.NODE_API + url,
+      headers: headers,
+      method: type,
+      json: data
     }
     request(options, (err, res, body) => {
-        if(res.statusCode == 200){
-          cb(body)
-        }else{
-          console.log(res.statusCode)
-        }
+      if (res.statusCode == 200) {
+        cb(body)
+      } else {
+        console.log(res.statusCode)
+      }
     })
   },
   //getToken
-  getToken(cb){
+  getToken(cb) {
 
-      this.http('user/login','POST',{
-        username: sessionStorage.getItem('username'),
-        password: sessionStorage.getItem('pwd')
-      },function(res){
-        if(res.code == 1){
+    this.http('user/login', 'POST', {
+      username: sessionStorage.getItem('username'),
+      password: sessionStorage.getItem('pwd')
+    }, function (res) {
+      if (res.code == 1) {
 
-          sessionStorage.setItem('token',res.token)
-          cb(true)
-        }else{
-          cb(false)
-        }
-      })
+        sessionStorage.setItem('token', res.token)
+        cb(true)
+      } else {
+        cb(false)
+      }
+    })
 
 
   },
   //post
-  post(url,data,cb){
-    this.http(url,'POST',data,function(res){
-      if(res.code == -1){
-        yzy.getToken(function(res2){
-          if(res2){
-            yzy.post(url,data,cb)
-          }else{
+  post(url, data, cb) {
+    this.http(url, 'POST', data, function (res) {
+      if (res.code == -1) {
+        yzy.getToken(function (res2) {
+          if (res2) {
+            yzy.post(url, data, cb)
+          } else {
             cb(res)
           }
         })
-      }else{
+      } else {
         cb(res)
       }
-    },{
-      token:sessionStorage.getItem('token'),
-      uid:sessionStorage.getItem('uid')
+    }, {
+      token: sessionStorage.getItem('token'),
+      uid: sessionStorage.getItem('uid')
     })
   },
   //get
-  get(url,data,cb){
-    this.http(url,'GET',data,cb,{
-      token:sessionStorage.getItem('token'),
-      uid:sessionStorage.getItem('uid')
+  get(url, data, cb) {
+    this.http(url, 'GET', data, cb, {
+      token: sessionStorage.getItem('token'),
+      uid: sessionStorage.getItem('uid')
     })
   },
   /**
@@ -115,15 +151,15 @@ const yzy = {
     let keyBuf = null;
 
     if (ivkey instanceof Buffer) {
-        keyBuf = ivkey;
+      keyBuf = ivkey;
     } else {
-        keyBuf = new Buffer(ivkey, 'hex');
+      keyBuf = new Buffer(ivkey, 'hex');
     }
     let dataBuf = null;
     if (data instanceof Buffer) {
-        dataBuf = data;
+      dataBuf = data;
     } else {
-        dataBuf = new Buffer(data, 'utf8');
+      dataBuf = new Buffer(data, 'utf8');
     }
     let cipher = crypto.createCipheriv(_algorithm, keyBuf, ivBuffer);
     cipher.setAutoPadding(true);
@@ -133,24 +169,24 @@ const yzy = {
   },
 
   /**
-  * @desc:  解密
-  * @param: data: 待解密的内容； dataEncoding: 内容编码; key: 秘钥；
-  *         keyEncoding: 秘钥编码； padding: 自动填充加密向量
-  */
-  decypt (data, dataEncoding, key, keyEncoding, padding) {
+   * @desc:  解密
+   * @param: data: 待解密的内容； dataEncoding: 内容编码; key: 秘钥；
+   *         keyEncoding: 秘钥编码； padding: 自动填充加密向量
+   */
+  decypt(data, dataEncoding, key, keyEncoding, padding) {
 
     let keyBuf = null;
     if (key instanceof Buffer) {
-        keyBuf = key;
+      keyBuf = key;
     } else {
-        keyBuf = new Buffer(key, keyEncoding);
+      keyBuf = new Buffer(key, keyEncoding);
     }
 
     let dataBuf = null;
     if (data instanceof Buffer) {
-        dataBuf = data;
+      dataBuf = data;
     } else {
-        dataBuf = new Buffer(data, dataEncoding);
+      dataBuf = new Buffer(data, dataEncoding);
     }
 
     var decipher = crypto.createDecipheriv(_algorithm, keyBuf, ivBuffer);

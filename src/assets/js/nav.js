@@ -73,27 +73,31 @@ const nav = {
     },
   ],
   item2: [{
+      label: '项目管理',
+      sub: [{
+        label: '项目列表',
+        path: '/dayin',
+        icon: 'ios-list-box-outline'
+      }]
+    },
+    {
       label: '员工管理',
       sub: [{
-          label: '员工列表',
+          label: '经纪人',
           path: '/',
           icon: 'ios-person-outline'
         },
         {
-          label: '角色',
+          label: '业务员',
+          path: '/',
+          icon: 'ios-person-add-outline'
+        }, {
+          label: '管理员',
           path: '/',
           icon: 'ios-person-add-outline'
         }
       ]
     },
-    {
-      label: '图库',
-      sub: [{
-        label: '图库列表',
-        path: '',
-        icon: 'ios-list-box-outline'
-      }]
-    }
   ],
 }
 module.exports = nav

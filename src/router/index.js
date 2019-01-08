@@ -23,6 +23,7 @@ import server from '../pages/server/server.vue'
 import wxuserList from '../pages/wxuser/list/list.vue'
 
 import daiqu from '../pages/order/daiqu.vue'
+import dayin from '../pages/order/dayin.vue'
 
 Vue.use(Router)
 
@@ -94,6 +95,11 @@ export default new Router({
         {
           path: '/daiqu',
           name: '快递代取订单',
+          component: daiqu
+        },
+        {
+          path: '/dayin',
+          name: '项目管理',
           component: daiqu
         },
       ]
