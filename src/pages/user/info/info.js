@@ -8,7 +8,12 @@ let list = {
   },
   data() {
     return {
-      msg: '',
+      msg: {
+        username: '',
+        user_state: 'DISABLE',
+        create_time: '',
+        phone: ''
+      },
       list: []
     }
   },
@@ -24,6 +29,14 @@ let list = {
     this.getServer()
   },
   methods: {
+    navTo(path, id) {
+      this.$router.push({
+        path: path,
+        query: {
+          id: id
+        }
+      })
+    },
     getUserInfo() {
       this.yzy.post('user/info', {
         uid: this.uid ? this.uid : sessionStorage.getItem('uid')

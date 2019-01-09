@@ -99,5 +99,39 @@ const nav = {
       ]
     },
   ],
+  daili1: [{
+    label: '接单员管理',
+    sub: [{
+      label: '接单员列表',
+      path: '/dayin',
+      icon: 'ios-list-box-outline'
+    }, {
+      label: '审核列表',
+      path: '/dayin',
+      icon: 'ios-list-box-outline'
+    }]
+  }, {
+    label: '订单管理',
+    sub: [{
+      label: '快递代取订单',
+      path: '/daiqu',
+      icon: 'ios-list-box-outline'
+    }, {
+      label: '打印订单',
+      path: '/dayin',
+      icon: 'ios-list-box-outline'
+    }, {
+      label: '其他订单',
+      path: '/other',
+      icon: 'ios-list-box-outline'
+    }]
+  }, {
+    label: '设置',
+    sub: [{
+      label: '代理设置',
+      path: '/dayin',
+      icon: 'ios-list-box-outline'
+    }]
+  }, ]
 }
 module.exports = nav

@@ -90,7 +90,7 @@
         style="margin-top:15px"
       ></el-pagination>
     </div>
-    <el-dialog title="信息" :visible.sync="seevisable" width="700" center>
+    <el-dialog title="信息" :visible.sync="seevisable" width="1000" center>
       <info :uid="tempUid"></info>
     </el-dialog>
   </div>

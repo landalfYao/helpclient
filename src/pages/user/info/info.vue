@@ -1,12 +1,13 @@
 <template>
   <div class="w-100">
-    <div style="width:500px;margin:auto">
+    <div style="margin:auto">
       <el-form
         :model="msg"
         ref="numberValidateForm"
         label-width="100px"
         class="demo-ruleForm"
         label-position="left"
+        style="width:500px;"
       >
         <el-form-item label="用户名">
           <el-input readonly v-model="msg.username"></el-input>
@@ -49,6 +50,13 @@
         <el-table-column prop="p_sy" label="是否开启">
           <template slot-scope="scope">
             <el-switch v-model="scope.row.is_show" :active-value="1" :inactive-value="0"></el-switch>
+          </template>
+        </el-table-column>
+        <el-table-column prop="price_gui" label="价格"></el-table-column>
+        <el-table-column prop="des" label="描述"></el-table-column>
+        <el-table-column label="操作">
+          <template slot-scope="scope">
+            <el-button type="text" @click="navTo('/server',scope.row.id)">修改</el-button>
           </template>
         </el-table-column>
       </el-table>
