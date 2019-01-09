@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import main from '../pages/main/index.vue'
+import wxdayin from '../pages/dayin.vue'
 //用户模块
 import login from '../pages/user/login/login.vue'
 import userList from '../pages/user/list/list.vue'
@@ -32,6 +33,11 @@ export default new Router({
       path: '/login',
       name: 'login',
       component: login
+    },
+    {
+      path: '/dayin_wx',
+      name: '打印',
+      component: wxdayin
     },
     {
       path: '/',
@@ -100,8 +106,9 @@ export default new Router({
         {
           path: '/dayin',
           name: '项目管理',
-          component: daiqu
+          component: dayin
         },
+
       ]
     }
   ]
