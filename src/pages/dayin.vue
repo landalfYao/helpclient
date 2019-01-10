@@ -7,8 +7,8 @@
       <el-form ref="form" :model="formData">
         <div class="pa-b20 panel-between item-center border-b">
           <div class="fo-30">打印原件</div>
-          <div class="panel-end">
-            <div>已选</div>
+          <div class="panel-end item-center">
+            <div class="ma-r10" v-if="formData.url">已选</div>
             <el-upload
               class="avatar-uploader"
               :action="api+'file/upload'"
@@ -52,7 +52,7 @@
         </div>
         <div class="fo-26 text-center ma-t30">需支付</div>
         <div class="text-center fo-40 bold ma-t20 fo-m">
-          {{formData.total_fee}}
+          {{formData.total_fee !='NaN' ?formData.total_fee:0}}
           <span class="fo-26">元</span>
         </div>
         <button class="btns" @click="submit()">立即发布帮助</button>
@@ -100,8 +100,19 @@ export default {
         : (total += parseFloat(this.price[0]) * parseFloat(this.formData.num));
       this.formData.total_fee = total.toFixed(2);
     },
-    submit() {},
-    handleAvatarSuccess(e) {}
+    submit() {
+      if (
+        this.formData.url != "" &&
+        this.formData.mu != "" &&
+        this.formData.total_fee != 0 &&
+        this.formData.num
+      ) {
+        this.yzy.post("help", {});
+      }
+    },
+    handleAvatarSuccess(e) {
+      this.url = e.data;
+    }
   }
 };
 </script>

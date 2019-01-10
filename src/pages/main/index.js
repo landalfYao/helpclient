@@ -1,75 +1,93 @@
 const nav = require('./../../assets/js/nav')
 
-let that ;
+let that;
 let main = {
-  data () {
+  data() {
     return {
       innerHeight: window.innerHeight,
-      systemName : this.yzy.systemName,
-      topNav:[],
-      nav:[],
+      systemName: this.yzy.systemName,
+      topNav: [],
+      nav: [],
       defaultMeun: '',
-      defaultActive:'',
-      linkName:'',
-      dtype:-1
+      defaultActive: '',
+      linkName: '',
+      dtype: -1
     }
   },
-  watch:{
-    $route(){
+  watch: {
+    $route() {
       this.linkName = this.$route.name
     }
   },
-  mounted () {
+  mounted() {
     that = this
     this.onResize()
     this.initUser()
 
   },
-  methods:{
+  methods: {
     //监听窗口变化
-    onResize(){
-      window.onresize=function(){
+    onResize() {
+      window.onresize = function () {
         that.innerHeight = window.innerHeight
       }
     },
-    navTo(path){
-      this.$router.push({path:path})
+    navTo(path) {
+      this.$router.push({
+        path: path
+      })
     },
     //初始化用户
-    initUser(){
-      if(sessionStorage.getItem('token')){
+    initUser() {
+      if (sessionStorage.getItem('token')) {
         this.initNav()
         this.dtype = sessionStorage.getItem('dtype')
-      }else{
-        this.$router.push({path:'/login'})
+      } else {
+        this.$router.push({
+          path: '/login'
+        })
       }
     },
     //初始化导航
-    initNav(){
+    initNav() {
       this.topNav = nav.topNav
       this.defaultMeun = this.topNav[0].path
-      this.nav = nav.item1
+      console.log(sessionStorage.getItem('dtype'))
+      if (sessionStorage.getItem('dtype') == 2) {
+        this.nav = nav.daili1
+      } else {
+        this.nav = nav.item1
+      }
+
       this.defaultActive = this.nav[0].sub[0].path
-      this.$router.push({path:this.nav[0].sub[0].path})
+      this.$router.push({
+        path: this.nav[0].sub[0].path
+      })
     },
 
-    selectTopNav(e){
+    selectTopNav(e) {
       this.nav = nav[e]
       this.defaultActive = this.nav[0].sub[0].path
-      this.$router.push({path:this.nav[0].sub[0].path})
+      this.$router.push({
+        path: this.nav[0].sub[0].path
+      })
     },
 
-    logout () {
+    logout() {
       sessionStorage.removeItem('token')
       sessionStorage.removeItem('uid')
       sessionStorage.removeItem('userInfo')
       sessionStorage.removeItem('username')
       sessionStorage.removeItem('pwd')
       sessionStorage.removeItem('dtype')
-      this.$router.push({path:'/login'})
+      this.$router.push({
+        path: '/login'
+      })
     },
-    navSelect(e){
-      this.$router.push({path:e})
+    navSelect(e) {
+      this.$router.push({
+        path: e
+      })
     }
   }
 

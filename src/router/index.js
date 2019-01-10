@@ -26,6 +26,8 @@ import wxuserList from '../pages/wxuser/list/list.vue'
 import daiqu from '../pages/order/daiqu.vue'
 import dayin from '../pages/order/dayin.vue'
 
+import jdlist from '../pages/wxuser/jdlist/jdlist.vue'
+import shlist from '../pages/wxuser/sh/jdlist.vue'
 Vue.use(Router)
 
 export default new Router({
@@ -108,7 +110,16 @@ export default new Router({
           name: '项目管理',
           component: dayin
         },
-
+        {
+          path: '/jdlist',
+          name: '接单员列表',
+          component: jdlist
+        },
+        {
+          path: '/shlist',
+          name: '审核列表',
+          component: shlist
+        },
       ]
     }
   ]

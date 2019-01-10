@@ -103,11 +103,11 @@ const nav = {
     label: '接单员管理',
     sub: [{
       label: '接单员列表',
-      path: '/dayin',
+      path: '/jdlist',
       icon: 'ios-list-box-outline'
     }, {
       label: '审核列表',
-      path: '/dayin',
+      path: '/shlist',
       icon: 'ios-list-box-outline'
     }]
   }, {
