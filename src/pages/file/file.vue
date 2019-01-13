@@ -19,8 +19,9 @@
     <div style="margin-top:15px">
       <div class="panel-between item-center">
         <el-button-group>
-          <!-- <el-button type="danger" plain icon="el-icon-delete"></el-button> -->
-          <!-- <el-button type="success" plain @click="changeUserState('available')">接单</el-button>-->
+          <el-button type="danger" plain icon="el-icon-delete"></el-button> 
+          <!-- <el-button type="success" plain @click="changeUserState('available')">启用用户</el-button>
+          <el-button type="warning" plain @click="changeUserState('disable')">禁用用户</el-button>-->
         </el-button-group>
         <el-select
           v-model="query.pageSize"
@@ -49,27 +50,17 @@
       @filter-change="filterChange"
     >
       <el-table-column type="selection" width="55"></el-table-column>
-      <el-table-column prop="order_num" label="订单编号"></el-table-column>
-      <el-table-column prop="nick_name" label="下单用户"></el-table-column>
-      <el-table-column prop="phone" label="手机号"></el-table-column>
-      <el-table-column prop="dphone" label="短号"></el-table-column>
-      <el-table-column prop="des" label="信息"></el-table-column>
-      <el-table-column prop="mu" label="目的地"></el-table-column>
-      <el-table-column prop="total_fee" label="已支付"></el-table-column>
-      <el-table-column label="状态" column-key="state">
+      <el-table-column prop="id" label="ID" width="55"></el-table-column>
+      <el-table-column label="文件名" prop="realname" ></el-table-column>
+      <el-table-column label="类型" prop="type"></el-table-column>
+      <el-table-column prop="size" label="大小"> 
         <template slot-scope="scope">
-          <el-tag
-            :type="scope.row.state == 1 ? 'success':scope.row.state == 2 ? 'primary':scope.row.state == 3 ? 'warning':'error'"
-          >{{scope.row.state == 1 ? '需要帮助':scope.row.state == 2 ? '已帮助':scope.row.state == 3 ? '已完成':'已取消'}}</el-tag>
+          <div>{{scope.row.size/1024 < 1024 ? (scope.row.size/1024)+'kb':(scope.row.size/1024/1024)+'mb'}}</div>
         </template>
       </el-table-column>
-      <el-table-column label="操作">
+      <el-table-column prop="信息" label="操作">
         <template slot-scope="scope">
-          <el-button
-            type="text"
-            @click="seevisable = true,tempUid = scope.row.id"
-            v-if="scope.row.state == 1"
-          >接单</el-button>
+          <div>1</div>
         </template>
       </el-table-column>
     </el-table>
@@ -84,12 +75,8 @@
         style="margin-top:15px"
       ></el-pagination>
     </div>
-    <el-dialog title="信息" :visible.sync="seevisable" width="700" center>
-      <info :uid="tempUid"></info>
-    </el-dialog>
   </div>
 </template>
 <script>
-let app = require("./daiqu.js");
-export default app;
+export default require("./file.js");
 </script>

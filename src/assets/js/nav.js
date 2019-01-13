@@ -71,6 +71,15 @@ const nav = {
         icon: 'ios-podium-outline',
       }]
     },
+    {
+      label: '文件管理',
+      dtype: -1,
+      sub: [{
+        label: '文件列表',
+        path: '/file',
+        icon: 'ios-podium-outline',
+      }]
+    },
   ],
   item2: [{
       label: '项目管理',

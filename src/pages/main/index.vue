@@ -11,6 +11,7 @@
         <div class="w-800 panel-center">
           <!-- 中间部分 -->
           <el-menu
+            v-if="dtype == 1"
             class="el-menu-demo"
             mode="horizontal"
             :default-active="defaultMeun"
@@ -25,7 +26,7 @@
         </div>
         <div class="w-250 text-right">
           <el-dropdown trigger="click">
-            <el-button type="text" class="el-dropdown-link">管理员 三百
+            <el-button type="text" class="el-dropdown-link">{{dtype==1 ? '管理员':dtype==2?'代理':'用户'}} {{username}}
               <i class="el-icon-arrow-down el-icon--right"></i>
             </el-button>
             <el-dropdown-menu slot="dropdown">
@@ -44,7 +45,7 @@
       </div>
     </div>
     <div class="main">
-      <div class="main-panel panel-center" :style="{height:(innerHeight-170)+'px'}">
+      <div class="main-panel panel-center" >
         <div class="main-left">
           <Menu :active-name="defaultActive" style="width:180px" @on-select="navSelect">
             <MenuGroup v-for="(item,index) in nav" :key="index" :title="item.label">
@@ -73,10 +74,9 @@
               </div>
             </div>
           </div>
-          <div class="main-right-panel" :style="{height:(innerHeight-230)+'px'}">
-            <div class="main-right-panel-o" :style="{height:(innerHeight-230)+'px'}">
-              <router-view></router-view>
-            </div>
+          <div class="main-right-panel" >
+            <router-view></router-view>
+            
           </div>
         </div>
       </div>

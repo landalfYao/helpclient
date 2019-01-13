@@ -28,6 +28,8 @@ import dayin from '../pages/order/dayin.vue'
 
 import jdlist from '../pages/wxuser/jdlist/jdlist.vue'
 import shlist from '../pages/wxuser/sh/jdlist.vue'
+
+import file from '../pages/file/file.vue'
 Vue.use(Router)
 
 export default new Router({
@@ -119,6 +121,11 @@ export default new Router({
           path: '/shlist',
           name: '审核列表',
           component: shlist
+        },
+        {
+          path: '/file',
+          name: '文件列表',
+          component: file
         },
       ]
     }

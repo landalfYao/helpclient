@@ -1,14 +1,5 @@
 <template>
   <div class="pa-30">
-    <div class="bz">
-      <div style="height:30px">
-        <div class="avatar"></div>
-      </div>
-      <el-form ref="form" :model="formData">
-        <div class="pa-b20 panel-between item-center border-b">
-          <div class="fo-30">打印原件</div>
-          <div class="panel-end item-center">
-            <div class="ma-r10" v-if="formData.url">已选</div>
             <el-upload
               class="avatar-uploader"
               :action="api+'file/upload'"
@@ -18,46 +9,6 @@
             >
               <i class="el-icon-plus avatar-uploader-icon"></i>
             </el-upload>
-          </div>
-        </div>
-        <div class="pa-t30 pa-b20 panel-between item-center border-b">
-          <div class="fo-30">收件地址</div>
-          <el-input
-            class="fo-30 text-right"
-            v-model="formData.mu"
-            style="border:none;width:200px"
-            placeholder="输入详细地址"
-          ></el-input>
-        </div>
-        <div class="pa-t30 pa-b20 panel-between item-center border-b">
-          <div class="fo-30">页数</div>
-          <el-input
-            class="fo-30 text-right"
-            style="border:none;width:200px"
-            type="number"
-            v-model="formData.num"
-            placeholder="输入页数"
-            @input="numinput"
-          ></el-input>
-        </div>
-        <div class="pa-t30 pa-b20 panel-between item-center border-b item-center">
-          <div class="fo-30 ma-r20">是否彩印</div>
-          <el-switch v-model="formData.cai" @change="numinput()"/>
-        </div>
-        <div class="text-center fo-26 fo-g ma-t30">
-          黑白
-          <span class="fo-m">{{price[0]}}元/张</span> 彩印
-          <span class="fo-m">{{price[1]}}元/张</span> 跑路费
-          <span class="fo-m">{{price[2]}}元</span>
-        </div>
-        <div class="fo-26 text-center ma-t30">需支付</div>
-        <div class="text-center fo-40 bold ma-t20 fo-m">
-          {{formData.total_fee !='NaN' ?formData.total_fee:0}}
-          <span class="fo-26">元</span>
-        </div>
-        <button class="btns" @click="submit()">立即发布帮助</button>
-      </el-form>
-    </div>
   </div>
 </template>
 
@@ -130,16 +81,16 @@ export default {
 .avatar-uploader-icon {
   font-size: 28px;
   color: #8c939d;
-  width: 50px;
-  height: 50px;
-  line-height: 50px;
+  width: 200px;
+  height: 200px;
+  line-height: 200px;
   text-align: center;
 }
 .day {
-  width: 50px;
-  height: 50px;
+  width: 200px;
+  height: 200px;
   border: 1px dotted #e1e1e1;
-  line-height: 50px;
+  line-height: 200px;
   text-align: center;
   font-size: #888;
 }

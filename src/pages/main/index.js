@@ -11,7 +11,8 @@ let main = {
       defaultMeun: '',
       defaultActive: '',
       linkName: '',
-      dtype: -1
+      dtype: -1,
+      username:sessionStorage.getItem('username')
     }
   },
   watch: {
