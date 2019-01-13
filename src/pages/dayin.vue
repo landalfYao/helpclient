@@ -1,7 +1,9 @@
 <template>
-  <div class="pa-30">
+  <div class="pa-30 panel-center item-center">
+    <div>
             <el-upload
               class="avatar-uploader"
+              style="margin:auto"
               :action="api+'file/upload'"
               :show-file-list="false"
               :on-success="handleAvatarSuccess"
@@ -9,6 +11,10 @@
             >
               <i class="el-icon-plus avatar-uploader-icon"></i>
             </el-upload>
+
+            <el-button size="large" style="width:200px" @click="navBack()">返回</el-button>
+    </div>
+            
   </div>
 </template>
 
@@ -40,6 +46,9 @@ export default {
     }
   },
   methods: {
+    navBack(){
+      window.history.go(-1)
+    },
     numinput(e) {
       this.init();
     },
