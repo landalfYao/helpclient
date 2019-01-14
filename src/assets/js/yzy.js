@@ -6,7 +6,7 @@ const ivkey = Buffer.from('15464336451324535212156486623224', 'utf8').toString('
 const request = require("request");
 
 const yzy = {
-  systemName: '时乘优培后台管理系统',
+  systemName: '互帮互助管理系统',
   NODE_API: 'http://localhost:3333/api/',
 
   pageSize: [{
