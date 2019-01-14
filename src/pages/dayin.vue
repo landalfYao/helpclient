@@ -1,20 +1,26 @@
 <template>
-  <div class="pa-30 panel-center item-center">
-    <div>
-            <el-upload
-              class="avatar-uploader"
-              style="margin:auto"
-              :action="api+'file/upload'"
-              :show-file-list="false"
-              :on-success="handleAvatarSuccess"
-              name="file"
-            >
-              <i class="el-icon-plus avatar-uploader-icon"></i>
-            </el-upload>
-
-            <el-button size="large" style="width:200px" @click="navBack()">返回</el-button>
+  <div class="pa-30 panel-center item-center" v-loading="loading">
+    <div v-if="!cg">
+      <el-upload
+        class="avatar-uploader"
+        style="margin:auto"
+        :action="api+'file/upload'"
+        :show-file-list="false"
+        :data="{wx_id:wx_id}"
+        :on-success="handleAvatarSuccess"
+        name="file"
+      >
+        <i class="el-icon-plus avatar-uploader-icon"></i>
+      </el-upload>
+      <div class="fo-30 text-center">点击上传打印原件</div>
     </div>
-            
+    <div class="text-center" v-if="cg">
+      <i class="el-icon-success" style="font-size:70px;color:#00cc99"></i>
+      <div class="text-center ma-t20">
+        上传成功，请点击
+        <span class="bold">左上角返回</span>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -30,24 +36,23 @@ export default {
         cai: false,
         total_fee: 0
       },
-      api: this.yzy.NODE_API,
-      uid: "",
-      msg: {},
-      price: [0, 0, 0]
+      api: "",
+      wx_id: "",
+      loading: false,
+      cg: false
     };
   },
   mounted() {
     document.title = "打印服务";
-    if (this.$route.query.uid) {
-      this.uid = this.$route.query.uid;
-      this.msg = JSON.parse(this.$route.query.data);
-      this.price = this.msg.price_gui.split(",");
+    this.api = this.yzy.NODE_API;
+    if (this.$route.query.wx_id) {
+      this.wx_id = this.$route.query.wx_id;
       this.init();
     }
   },
   methods: {
-    navBack(){
-      window.history.go(-1)
+    navBack() {
+      window.history.go(-1);
     },
     numinput(e) {
       this.init();
@@ -71,7 +76,10 @@ export default {
       }
     },
     handleAvatarSuccess(e) {
-      this.url = e.data;
+      if (e.code == 1) {
+        this.cg = true;
+      }
+      loading = false;
     }
   }
 };

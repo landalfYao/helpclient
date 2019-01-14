@@ -10,10 +10,9 @@ const request = require("request");
 const yzy = {
   systemName: "互帮互助管理系统",
 
-  NODE_API: "http://localhost:3333/api/",
+  NODE_API: "https://hapi.ypyzy.top/api/",
 
-  pageSize: [
-    {
+  pageSize: [{
       label: "每页10条",
       value: 10
     },
@@ -108,12 +107,11 @@ const yzy = {
   getToken(cb) {
     this.http(
       "user/login",
-      "POST",
-      {
+      "POST", {
         username: sessionStorage.getItem("username"),
         password: sessionStorage.getItem("pwd")
       },
-      function(res) {
+      function (res) {
         if (res.code == 1) {
           sessionStorage.setItem("token", res.token);
           cb(true);
@@ -129,9 +127,9 @@ const yzy = {
       url,
       "POST",
       data,
-      function(res) {
+      function (res) {
         if (res.code == -1) {
-          yzy.getToken(function(res2) {
+          yzy.getToken(function (res2) {
             if (res2) {
               yzy.post(url, data, cb);
             } else {
@@ -141,8 +139,7 @@ const yzy = {
         } else {
           cb(res);
         }
-      },
-      {
+      }, {
         token: sessionStorage.getItem("token"),
         uid: sessionStorage.getItem("uid")
       }
