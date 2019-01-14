@@ -1,15 +1,11 @@
 let that;
 let list = {
-
   data() {
     return {
-      tempUid: '',
-      seevisable: false,
       multipleSelection: [],
       query: {
-        fields: 'helplist.*,wxuser.phone,wxuser.dphone,wxuser.avatar_url,wxuser.nick_name',
         wheres: '',
-        sorts: 'helplist.state asc,helplist.create_time desc',
+        sorts: 'create_time desc',
         pageIndex: 1,
         pageSize: 10
       },
@@ -17,7 +13,7 @@ let list = {
       pageSize: this.yzy.pageSize,
       total: 0,
       tableData: [],
-      searchList: this.yzy.initFilterSearch(['订单编号', '昵称', '手机号', '短号', '状态(1,2,3,4)'], ['order_num', 'nick_name', 'phone', 'dphone', 'state'])
+      searchList: this.yzy.initFilterSearch(['ID', '微信ID','a_id'], ['id', 'wx_id', 'a_id'])
     }
   },
   mounted() {
@@ -26,17 +22,18 @@ let list = {
   },
   methods: {
     getList() {
-      let t = this.query.wheres
       let sq = ''
       for (let i in this.wheres) {
         if (this.wheres[i].value && this.wheres[i].value != '') {
           sq += this.wheres[i].value + ' and '
         }
       }
-
-      sq += ' title = "快递代取" and state in (1,2,3,4) and helplist.is_delete=0 and a_id='+sessionStorage.getItem('a_id')
-      this.query.wheres = sq
-      this.yzy.post('help/get2', this.query, function (res) {
+      if (sq != '') {
+        this.query.wheres = sq.substring(0, sq.length - 4)
+      } else {
+        this.query.wheres = ''
+      }
+      this.yzy.post('file/get', this.query, function (res) {
         if (res.code == 1) {
 
           that.tableData = res.data.list

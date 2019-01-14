@@ -28,6 +28,14 @@ import dayin from '../pages/order/dayin.vue'
 
 import jdlist from '../pages/wxuser/jdlist/jdlist.vue'
 import shlist from '../pages/wxuser/sh/jdlist.vue'
+
+import file from '../pages/file/file.vue'
+
+//address
+import addressCate from '../pages/address/address_cate.vue'
+import addressCateEdit from '../pages/address/address_cate_edit.vue'
+import address from '../pages/address/address.vue'
+import addressEdit from '../pages/address/address_edit.vue'
 Vue.use(Router)
 
 export default new Router({
@@ -119,6 +127,31 @@ export default new Router({
           path: '/shlist',
           name: '审核列表',
           component: shlist
+        },
+        {
+          path: '/file',
+          name: '文件列表',
+          component: file
+        },
+        {
+          path: '/address_cate_edit',
+          name: '地址分组编辑',
+          component: addressCateEdit
+        },
+        {
+          path: '/address_cate',
+          name: '地址分组',
+          component: addressCate
+        },
+        {
+          path: '/address',
+          name: '地址列表',
+          component: address
+        },
+        {
+          path: '/address_edit',
+          name: '编辑地址',
+          component: addressEdit
         },
       ]
     }

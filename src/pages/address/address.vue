@@ -18,9 +18,7 @@
     <div style="margin-top:15px">
       <div class="panel-between item-center">
         <el-button-group>
-          <!-- <el-button type="danger" plain icon="el-icon-delete"></el-button> -->
-          <!-- <el-button type="success" plain @click="changeUserState('available')">启用用户</el-button>
-          <el-button type="warning" plain @click="changeUserState('disable')">禁用用户</el-button>-->
+          <el-button type="danger" plain icon="el-icon-delete"  @click="del()"></el-button>
         </el-button-group>
         <el-select
           v-model="query.pageSize"
@@ -49,19 +47,13 @@
     >
       <el-table-column type="selection" width="55"></el-table-column>
       <el-table-column prop="sort" label="序号"></el-table-column>
-      <el-table-column prop="pk_id" label="ID"></el-table-column>
-      <el-table-column prop="name" label="地区名"></el-table-column>
-
-      <el-table-column label="类型" column-key="user_state">
-        <template slot-scope="scope">
-          <el-tag
-            :type="scope.row.atype == 1 ? 'success':'warning'"
-          >{{scope.row.atype == 1 ? '城市':'校园'}}</el-tag>
-        </template>
-      </el-table-column>
+      <el-table-column prop="id" label="ID"></el-table-column>
+      <el-table-column prop="name" label="名称"></el-table-column>
+      <el-table-column prop="cate_id" label="分组ID"></el-table-column>
+   
       <el-table-column label="操作">
         <template slot-scope="scope">
-          <el-button type="text" @click="navTo('/area_edit',scope.row)">修改</el-button>
+          <el-button type="text" @click="navTo('/address_edit',scope.row)">修改</el-button>
         </template>
       </el-table-column>
     </el-table>
@@ -79,5 +71,5 @@
   </div>
 </template>
 <script>
-export default require("./area.js");
+export default require("./address.js");
 </script>

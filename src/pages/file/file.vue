@@ -2,6 +2,7 @@
   <div>
     <div class="panel-start wrap">
       <el-input
+        placeholder="搜索"
         v-for="(item,index) in searchList"
         v-model="item.value"
         :placeholder="item.label"
@@ -18,7 +19,7 @@
     <div style="margin-top:15px">
       <div class="panel-between item-center">
         <el-button-group>
-          <!-- <el-button type="danger" plain icon="el-icon-delete"></el-button> -->
+          <el-button type="danger" plain icon="el-icon-delete"></el-button> 
           <!-- <el-button type="success" plain @click="changeUserState('available')">启用用户</el-button>
           <el-button type="warning" plain @click="changeUserState('disable')">禁用用户</el-button>-->
         </el-button-group>
@@ -46,22 +47,20 @@
       size="small"
       style="width: 100%;margin-top:15px"
       @selection-change="handleSelectionChange"
+      @filter-change="filterChange"
     >
       <el-table-column type="selection" width="55"></el-table-column>
-      <el-table-column prop="sort" label="序号"></el-table-column>
-      <el-table-column prop="pk_id" label="ID"></el-table-column>
-      <el-table-column prop="name" label="地区名"></el-table-column>
-
-      <el-table-column label="类型" column-key="user_state">
+      <el-table-column prop="id" label="ID" width="55"></el-table-column>
+      <el-table-column label="文件名" prop="realname" ></el-table-column>
+      <el-table-column label="类型" prop="type"></el-table-column>
+      <el-table-column prop="size" label="大小"> 
         <template slot-scope="scope">
-          <el-tag
-            :type="scope.row.atype == 1 ? 'success':'warning'"
-          >{{scope.row.atype == 1 ? '城市':'校园'}}</el-tag>
+          <div>{{scope.row.size/1024 < 1024 ? (scope.row.size/1024)+'kb':(scope.row.size/1024/1024)+'mb'}}</div>
         </template>
       </el-table-column>
-      <el-table-column label="操作">
+      <el-table-column prop="信息" label="操作">
         <template slot-scope="scope">
-          <el-button type="text" @click="navTo('/area_edit',scope.row)">修改</el-button>
+          <div>1</div>
         </template>
       </el-table-column>
     </el-table>
@@ -79,5 +78,5 @@
   </div>
 </template>
 <script>
-export default require("./area.js");
+export default require("./file.js");
 </script>
