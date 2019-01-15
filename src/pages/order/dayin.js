@@ -16,19 +16,13 @@ let list = {
       wheres: [],
       pageSize: this.yzy.pageSize,
       total: 0,
-      tableData: [{
-        order_num: 1,
-        nick_name: '招商贷款',
-        phone: '2019-01-09',
-        dphone: '吴亦凡',
-        des: '杨幂'
-      }],
+      tableData: [],
       searchList: this.yzy.initFilterSearch(['订单编号', '昵称', '手机号', '短号', '状态(1,2,3,4)'], ['order_num', 'nick_name', 'phone', 'dphone', 'state'])
     }
   },
   mounted() {
     that = this;
-    // that.getList()
+    that.getList()
   },
   methods: {
     getList() {
@@ -40,7 +34,7 @@ let list = {
         }
       }
 
-      sq += ' title = "快递代取" and state in (1,2,3,4) and helplist.is_delete=0'
+      sq += ' title in ("打印服务") and state in (1,2,3,4) and helplist.is_delete=0 and a_id=' + sessionStorage.getItem('a_id')
       this.query.wheres = sq
       this.yzy.post('help/get2', this.query, function (res) {
         if (res.code == 1) {

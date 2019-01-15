@@ -26,8 +26,11 @@
         </div>
         <div class="w-250 text-right">
           <el-dropdown trigger="click">
-            <el-button type="text" class="el-dropdown-link">{{dtype==1 ? '管理员':dtype==2?'代理':'用户'}} {{username}}
-              <i class="el-icon-arrow-down el-icon--right"></i>
+            <el-button type="text" class="el-dropdown-link">
+              {{dtype==1 ? '管理员':dtype==2?'代理':'用户'}} {{username}}
+              <i
+                class="el-icon-arrow-down el-icon--right"
+              ></i>
             </el-button>
             <el-dropdown-menu slot="dropdown">
               <el-dropdown-item>
@@ -45,7 +48,7 @@
       </div>
     </div>
     <div class="main">
-      <div class="main-panel panel-center" >
+      <div class="main-panel panel-center">
         <div class="main-left">
           <Menu :active-name="defaultActive" style="width:180px" @on-select="navSelect">
             <MenuGroup v-for="(item,index) in nav" :key="index" :title="item.label">
@@ -74,14 +77,13 @@
               </div>
             </div>
           </div>
-          <div class="main-right-panel" >
+          <div class="main-right-panel">
             <router-view></router-view>
-            
           </div>
         </div>
       </div>
     </div>
-    <div class="footer">杭州时乘信息科技有限公司 2018</div>
+    <div class="footer">湖州叮点网络科技有限公司 2018</div>
   </div>
 </template>
 <script>

@@ -2,8 +2,12 @@ let that;
 let list = {
   data() {
     return {
+      dialogVisible: false,
+      jdr: [],
+      dtype: sessionStorage.getItem('dtype'),
       price: ['', '', ''],
       formData: {
+        jdr: '',
         dl_id: '',
         server_name: '',
         dl_sy: '',
@@ -13,6 +17,7 @@ let list = {
         des: ''
       },
       formData2: {
+        jdr: '',
         dl_id: '',
         server_name: '',
         dl_sy: '',
@@ -44,6 +49,9 @@ let list = {
     }
   },
   methods: {
+    getJd() {
+      this.jdr = [global.tempJd.avatar_url, global.tempJd.name, global.tempJd.openid, global.tempJd.id]
+    },
     getMsg() {
       this.yzy.post('server/get/id', {
         id: this.$route.query.id,
@@ -53,6 +61,7 @@ let list = {
           if (res.data[0].server_name == '快递代取' || res.data[0].server_name == '打印服务') {
             that.price = res.data[0].price_gui.split(',')
           }
+          that.jdr = res.data[0].jdr ? res.data[0].jdr.split(',') : []
 
         }
       })
@@ -67,6 +76,7 @@ let list = {
         } else {
           this.formData.price_gui = false
         }
+        this.formData.jdr = this.jdr.toString()
         let url = 'add'
         if (this.$route.query.id) {
           url = 'update'

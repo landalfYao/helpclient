@@ -25,6 +25,7 @@ import wxuserList from '../pages/wxuser/list/list.vue'
 
 import daiqu from '../pages/order/daiqu.vue'
 import dayin from '../pages/order/dayin.vue'
+import other from '../pages/order/other.vue'
 
 import jdlist from '../pages/wxuser/jdlist/jdlist.vue'
 import shlist from '../pages/wxuser/sh/jdlist.vue'
@@ -115,8 +116,13 @@ export default new Router({
         },
         {
           path: '/dayin',
-          name: '项目管理',
+          name: '打印服务',
           component: dayin
+        },
+        {
+          path: '/other',
+          name: '其他订单',
+          component: other
         },
         {
           path: '/jdlist',

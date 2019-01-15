@@ -12,7 +12,7 @@ let main = {
       defaultActive: '',
       linkName: '',
       dtype: -1,
-      username:sessionStorage.getItem('username')
+      username: sessionStorage.getItem('username')
     }
   },
   watch: {
@@ -21,12 +21,30 @@ let main = {
     }
   },
   mounted() {
+    document.title = this.yzy.systemName;
     that = this
     this.onResize()
     this.initUser()
-
+    this.getServer()
   },
   methods: {
+    getServer() {
+      this.yzy.post('server/get/uid', {
+        uid: sessionStorage.getItem('uid')
+      }, function (res) {
+        if (res.code == 1) {
+          for (let i in res.data) {
+            if (res.data[i].jdr != '' && res.data[i].jdr != null) {
+              res.data[i].jdr = res.data[i].jdr.split(',')
+            } else {
+              res.data[i].jdr = []
+            }
+          }
+          that.list = res.data
+          global.dlserver = res.data
+        }
+      })
+    },
     //监听窗口变化
     onResize() {
       window.onresize = function () {

@@ -54,6 +54,13 @@
         </el-table-column>
         <el-table-column prop="price_gui" label="价格"></el-table-column>
         <el-table-column prop="des" label="描述"></el-table-column>
+        <el-table-column label="默认接单人">
+          <template slot-scope="scope">
+            <div>
+              <img v-if="scope.row.jdr.length>0" :src="scope.row.jdr[0]" height="40px">
+            </div>
+          </template>
+        </el-table-column>
         <el-table-column label="操作">
           <template slot-scope="scope">
             <el-button type="text" @click="navTo('/server',scope.row.id)">修改</el-button>

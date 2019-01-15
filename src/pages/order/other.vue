@@ -55,21 +55,10 @@
       <el-table-column prop="dphone" label="短号"></el-table-column>
       <el-table-column prop="des" label="信息"></el-table-column>
       <el-table-column prop="mu" label="目的地"></el-table-column>
-      <el-table-column prop="file" label="文件名"></el-table-column>
-      <el-table-column prop="page" label="页数" width="55"></el-table-column>
-      <el-table-column label="印刷">
-        <template slot-scope="scope">
-          <el-tag
-            size="mini"
-            :type="scope.row.cai == 1 ? 'success':'info'"
-          >{{scope.row.cai == 1 ? '彩印':'黑白'}}</el-tag>
-        </template>
-      </el-table-column>
       <el-table-column prop="total_fee" label="已支付"></el-table-column>
       <el-table-column label="状态" column-key="state">
         <template slot-scope="scope">
           <el-tag
-            size="mini"
             :type="scope.row.state == 1 ? 'success':scope.row.state == 2 ? 'primary':scope.row.state == 3 ? 'warning':'error'"
           >{{scope.row.state == 1 ? '需要帮助':scope.row.state == 2 ? '已帮助':scope.row.state == 3 ? '已完成':'已取消'}}</el-tag>
         </template>
@@ -78,16 +67,9 @@
         <template slot-scope="scope">
           <el-button
             type="text"
-            class="text-center w-100"
             @click="seevisable = true,tempUid = scope.row.id"
             v-if="scope.row.state == 1"
           >接单</el-button>
-          <br>
-          <el-button
-            class="text-center w-100"
-            type="text"
-            @click="seevisable = true,tempUid = scope.row.id"
-          >下载</el-button>
         </template>
       </el-table-column>
     </el-table>
@@ -108,6 +90,6 @@
   </div>
 </template>
 <script>
-let app = require("./dayin.js");
+let app = require("./other.js");
 export default app;
 </script>
