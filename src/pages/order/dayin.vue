@@ -76,17 +76,11 @@
       </el-table-column>
       <el-table-column label="操作">
         <template slot-scope="scope">
+          <el-button type="text" @click="jdclick(scope.row)" v-if="scope.row.state == 1">接单</el-button>
           <el-button
+            v-if="scope.row.state != 1 && scope.row.state != 0"
             type="text"
-            class="text-center w-100"
-            @click="seevisable = true,tempUid = scope.row.id"
-            v-if="scope.row.state == 1"
-          >接单</el-button>
-          <br>
-          <el-button
-            class="text-center w-100"
-            type="text"
-            @click="seevisable = true,tempUid = scope.row.id"
+            @click="download(scope.row.file)"
           >下载</el-button>
         </template>
       </el-table-column>
@@ -102,9 +96,6 @@
         style="margin-top:15px"
       ></el-pagination>
     </div>
-    <el-dialog title="信息" :visible.sync="seevisable" width="700" center>
-      <info :uid="tempUid"></info>
-    </el-dialog>
   </div>
 </template>
 <script>

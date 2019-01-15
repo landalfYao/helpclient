@@ -3,7 +3,8 @@ let list = {
 
   data() {
     return {
-      tempUid: '',
+      jdr: [],
+      tempMsg: '',
       seevisable: false,
       multipleSelection: [],
       query: {
@@ -23,8 +24,53 @@ let list = {
   mounted() {
     that = this;
     that.getList()
+    that.getJDUser()
   },
   methods: {
+    jdclick(res) {
+      if (this.jdr.length == 0) {
+        that.$message({
+          type: 'error',
+          message: '还没有设置默认接单人'
+        })
+      } else {
+        this.yzy.post('help/jd', {
+          jd_id: this.jdr[3],
+          id: res.id,
+          openid: res.openid,
+          form_id: res.form_id,
+          title: res.title,
+          order_num: res.order_num
+        }, function (res) {
+          if (res.code == 1) {
+            that.$message({
+              type: 'success',
+              message: '接单成功'
+            })
+            that.getList()
+          } else {
+            that.$message({
+              type: 'error',
+              message: res.msg
+            })
+          }
+        })
+      }
+
+    },
+    //获取接单用户信息
+    getJDUser() {
+      let server = global.dlserver;
+      let temp = '';
+      for (let i in server) {
+        if (server[i].server_name == '快递代取') {
+          temp = server[i].jdr
+        }
+      }
+      if (temp != '') {
+        this.jdr = temp
+      }
+    },
     getList() {
       let t = this.query.wheres
       let sq = ''
@@ -34,7 +80,7 @@ let list = {
         }
       }
 
-      sq += ' title = "快递代取" and state in (1,2,3,4) and helplist.is_delete=0 and a_id='+sessionStorage.getItem('a_id')
+      sq += ' title = "快递代取" and state in (1,2,3,4) and helplist.is_delete=0 and a_id=' + sessionStorage.getItem('a_id')
       this.query.wheres = sq
       this.yzy.post('help/get2', this.query, function (res) {
         if (res.code == 1) {

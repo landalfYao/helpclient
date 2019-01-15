@@ -65,11 +65,7 @@
       </el-table-column>
       <el-table-column label="操作">
         <template slot-scope="scope">
-          <el-button
-            type="text"
-            @click="seevisable = true,tempUid = scope.row.id"
-            v-if="scope.row.state == 1"
-          >接单</el-button>
+          <el-button type="text" @click="jdclick(scope.row)" v-if="scope.row.state == 1">接单</el-button>
         </template>
       </el-table-column>
     </el-table>
@@ -84,9 +80,6 @@
         style="margin-top:15px"
       ></el-pagination>
     </div>
-    <el-dialog title="信息" :visible.sync="seevisable" width="700" center>
-      <info :uid="tempUid"></info>
-    </el-dialog>
   </div>
 </template>
 <script>
