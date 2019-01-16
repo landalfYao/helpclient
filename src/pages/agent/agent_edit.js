@@ -7,8 +7,9 @@ let list = {
         password: '',
         checkPwd: '',
         dtype: '',
-        dcity: '',
-        phone: ''
+        a_id: '',
+        phone: '',
+        deadline: ''
       },
       formData2: {
         username: '',
@@ -39,9 +40,10 @@ let list = {
         username: this.formData.username,
         password: this.yzy.encrypt(this.formData.password),
         checkPwd: this.yzy.encrypt(this.formData.checkPwd),
+        a_id: this.formData.a_id,
         dtype: this.formData.dtype,
-        dcity: this.formData.dcity,
-        phone: this.formData.phone
+        phone: this.formData.phone,
+        deadline: this.formData.deadline
       }
       formData.password = this.yzy.encrypt(formData.password)
       formData.checkPwd = this.yzy.encrypt(formData.checkPwd)

@@ -58,7 +58,7 @@
         <template slot-scope="scope">
           <el-tag
             :type="scope.row.dtype == 1 ? 'primary':scope.row.dtype == 2?'success':'warning'"
-          >{{scope.row.dtype == 1 ? '管理员':scope.row.dtype == 2?'城市代理':'校园代理'}}</el-tag>
+          >{{scope.row.dtype == 1 ? '管理员':scope.row.dtype == 2?'校园代理':'城市代理'}}</el-tag>
         </template>
       </el-table-column>
       <el-table-column

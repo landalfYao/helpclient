@@ -68,18 +68,18 @@ const nav = {
       sub: [{
         label: '快递代取订单',
         path: '/daiqu',
-        icon: 'ios-podium-outline',
+        icon: 'ios-list-box-outline'
+      }, {
+        label: '打印订单',
+        path: '/dayin',
+        icon: 'ios-list-box-outline'
+      }, {
+        label: '其他订单',
+        path: '/other',
+        icon: 'ios-list-box-outline'
       }]
     },
-    {
-      label: '文件管理',
-      dtype: -1,
-      sub: [{
-        label: '文件列表',
-        path: '/file',
-        icon: 'ios-podium-outline',
-      }]
-    },
+
   ],
   item2: [{
       label: '项目管理',

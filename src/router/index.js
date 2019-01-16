@@ -159,6 +159,11 @@ export default new Router({
           name: '编辑地址',
           component: addressEdit
         },
+        {
+          path: '/updatepwd',
+          name: '编辑地址',
+          component: updatepwd
+        },
       ]
     }
   ]

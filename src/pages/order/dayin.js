@@ -82,7 +82,8 @@ let list = {
         }
       }
 
-      sq += ' title in ("打印服务") and state in (1,2,3,4) and helplist.is_delete=0 and a_id=' + sessionStorage.getItem('a_id')
+      sq += ' title in ("打印服务") and state in (1,2,3,4) and helplist.is_delete=0 '
+      sq += sessionStorage.getItem('a_id') ? ' and a_id=' + sessionStorage.getItem('a_id') : ''
       this.query.wheres = sq
       this.yzy.post('help/get2', this.query, function (res) {
         if (res.code == 1) {

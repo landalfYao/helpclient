@@ -21,34 +21,34 @@ let list = {
     that.getList()
   },
   methods: {
-    del(){
-        this.$confirm('此操作将永久删除该文件, 是否继续?', '提示', {
-            confirmButtonText: '确定',
-            cancelButtonText: '取消',
-            type: 'warning'
-          }).then(() => {
-            that.yzy.post('address/del',{
-                ids:that.filterIds()
-            },function(res){
-                if(res.code == 1){
-                    that.$message({
-                        type: 'success',
-                        message: res.msg
-                      })
-                      that.getList()
-                }else{
-                    that.$message({
-                        type: 'error',
-                        message: res.msg
-                      })
-                }
+    del() {
+      this.$confirm('此操作将永久删除该文件, 是否继续?', '提示', {
+        confirmButtonText: '确定',
+        cancelButtonText: '取消',
+        type: 'warning'
+      }).then(() => {
+        that.yzy.post('address/del', {
+          ids: that.filterIds()
+        }, function (res) {
+          if (res.code == 1) {
+            that.$message({
+              type: 'success',
+              message: res.msg
             })
-          }).catch(() => {
-            this.$message({
-              type: 'info',
-              message: '已取消删除'
-            });          
-          });
+            that.getList()
+          } else {
+            that.$message({
+              type: 'error',
+              message: res.msg
+            })
+          }
+        })
+      }).catch(() => {
+        this.$message({
+          type: 'info',
+          message: '已取消删除'
+        });
+      });
     },
     navTo(path, row) {
       this.$router.push({
@@ -63,8 +63,8 @@ let list = {
           sq += this.wheres[i].value + ' and '
         }
       }
-    
-      this.query.wheres = sq + ' is_delete=0'
+
+      this.query.wheres = sq + ' is_delete=0 and a_id=' + sessionStorage.getItem('a_id')
       this.yzy.post('address/get', this.query, function (res) {
         if (res.code == 1) {
 

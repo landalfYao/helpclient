@@ -71,7 +71,6 @@ let main = {
     initNav() {
       this.topNav = nav.topNav
       this.defaultMeun = this.topNav[0].path
-      console.log(sessionStorage.getItem('dtype'))
       if (sessionStorage.getItem('dtype') == 2) {
         this.nav = nav.daili1
       } else {
