@@ -30,39 +30,38 @@
           </div>
         </div>
         <!-- 实时数据 E -->
+<!-- 实时数据 S -->
+        <div class="eol ma-t30">
+          <div class="w-100 panel-between">
+            <div class="panel-start item-center " style="width:25%" v-for="(item,index) in orderData" :key="index">
+              <div class="icon-ss">
+                <Icon :type="item.icon" size="25" color="#0099CC" />
+              </div>
+              <div class="ma-l30">
+                <div >{{item.label}}</div>
+                <div class="fo-40 ">{{item.value}}</div>
+              </div>
+            </div>
 
-        <div class="panel-start">
-          <!-- 消息 S -->
-          <div class="mes-box">
-            <div class="pa-t20 ma-l20 ">消息盒子</div>
-            <div class="pa-20 pkl">
-              <Timeline pending>
-                <TimelineItem>时乘优培1.0版本正式上线</TimelineItem>
-                <TimelineItem>时乘优培测试版上线</TimelineItem>
-                <TimelineItem>时乘优培开发中。。。</TimelineItem>
-                <TimelineItem>时乘优培项目策划</TimelineItem>
-                <TimelineItem>时乘优培项目落地</TimelineItem>
-              </Timeline>
-            </div>
-          </div>
-          <!-- 消息 E -->
-          <div class="mes-box2">
-            <div class="pa-t20 ma-l20 ">最新订单</div>
-            <div class="pa-20 pkl2">
-              <Timeline>
-                <TimelineItem>
-                    <div class="time">2018-12-18 15:12:00</div>
-                    <a class="content">张继科 17855559596 预定了 杜拉拉的 小课 ，下午 15:00 305教室</a>
-                </TimelineItem>
-                <TimelineItem>
-                    <div class="time">2018-12-18 15:12:00</div>
-                    <a class="content">张继科 17855559596 预定了 杜拉拉的 小课 ，下午 15:00 305教室</a>
-                </TimelineItem>
-              </Timeline>
-            </div>
           </div>
         </div>
+        <!-- 实时数据 E -->
+<!-- 实时数据 S -->
+        <div class="eol ma-t30">
+          <div class="w-100 panel-between">
+            <div class="panel-start item-center " style="width:25%" v-for="(item,index) in orderData2" :key="index">
+              <div class="icon-ss">
+                <Icon :type="item.icon" size="25" color="#0099CC" />
+              </div>
+              <div class="ma-l30">
+                <div >{{item.label}}</div>
+                <div class="fo-40 ">{{item.value}}</div>
+              </div>
+            </div>
 
+          </div>
+        </div>
+        <!-- 实时数据 E -->
         <!-- <div class="box-link panel-start">
           <div class="box-btn">
             商户号
