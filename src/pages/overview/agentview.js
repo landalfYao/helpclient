@@ -21,7 +21,7 @@ let list = {
   },
   mounted() {
     that = this
-    this.getAnalysisData()
+    this.pandu()
   },
   methods: {
     initTotalData() {

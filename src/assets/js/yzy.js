@@ -10,8 +10,8 @@ const request = require("request");
 const yzy = {
   systemName: "互帮互助管理系统",
 
-  // NODE_API: "https://hapi.ypyzy.top/api/",
-  NODE_API: "http://localhost:3333/api/",
+  NODE_API: "https://hapi.ypyzy.top/api/",
+  // NODE_API: "http://localhost:3333/api/",
 
   pageSize: [{
       label: "每页10条",
