@@ -4,7 +4,9 @@ let list = {
   data() {
     return {
       tempUid: '',
+      tempAid: '',
       seevisable: false,
+      seevisable2: false,
       multipleSelection: [],
       query: {
         wheres: '',

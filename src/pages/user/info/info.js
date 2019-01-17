@@ -2,7 +2,7 @@ let that;
 let list = {
   props: {
     uid: {
-      type: Number,
+      type: Number || String,
       require: false
     }
   },

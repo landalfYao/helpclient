@@ -1,5 +1,16 @@
 let that;
 let list = {
+  props: {
+    aid: {
+      type: String,
+      require: false
+    }
+  },
+  watch: {
+    aid() {
+      this.getAnalysisData()
+    }
+  },
   data() {
     return {
       totalData: [],
@@ -97,21 +108,31 @@ let list = {
 
 
     },
-    getAnalysisData() {
+    pandu() {
       if (global.analysis) {
         that.msg = global.analysis
         that.initTotalData()
       } else {
-        this.yzy.post('anlysis/get/agent', {
-          a_id: sessionStorage.getItem('a_id')
-        }, function (res) {
-          if (res.code == 1) {
-            global.analysis = res.data
-            that.msg = res.data
-            that.initTotalData()
-          }
-        })
+        this.getAnalysisData()
       }
+    },
+    getAnalysisData() {
+
+      this.yzy.post('anlysis/get/agent', {
+        a_id: this.aid ? this.aid : sessionStorage.getItem('a_id')
+      }, function (res) {
+        if (res.code == 1) {
+
+          if (that.aid) {
+            delete global.analysis
+          } else {
+            global.analysis = res.data
+          }
+          that.msg = res.data
+          that.initTotalData()
+        }
+      })
+
 
     }
   },
