@@ -76,6 +76,7 @@
       <el-table-column label="操作">
         <template slot-scope="scope">
           <el-button type="text" @click="seevisable = true,tempUid = scope.row.pk_id">查看</el-button>
+          <el-button type="text" @click="seevisable = true,tempUid = scope.row.pk_id">运营数据</el-button>
         </template>
       </el-table-column>
     </el-table>

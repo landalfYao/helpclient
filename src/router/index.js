@@ -37,6 +37,8 @@ import addressCate from '../pages/address/address_cate.vue'
 import addressCateEdit from '../pages/address/address_cate_edit.vue'
 import address from '../pages/address/address.vue'
 import addressEdit from '../pages/address/address_edit.vue'
+
+import agentview from '../pages/overview/agentview.vue'
 Vue.use(Router)
 
 export default new Router({
@@ -63,6 +65,11 @@ export default new Router({
           path: '/user/info',
           name: '用户信息',
           component: userInfo
+        },
+        {
+          path: '/agentview',
+          name: '代理数据总览',
+          component: agentview
         },
         {
           path: '/auth/list',

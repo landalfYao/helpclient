@@ -53,25 +53,6 @@
           </div>
         </div>
         <!-- 实时数据 E -->
-        <!-- 实时数据 S -->
-        <div class="eol ma-t30">
-          <div class="w-100 panel-between">
-            <div
-              class="panel-start item-center"
-              style="width:25%"
-              v-for="(item,index) in orderData"
-              :key="index"
-            >
-              <div class="icon-ss">
-                <Icon :type="item.icon" size="25" color="#0099CC"/>
-              </div>
-              <div class="ma-l30">
-                <div>{{item.label}}</div>
-                <div class="fo-40">{{item.value}}</div>
-              </div>
-            </div>
-          </div>
-        </div>
         <div class="panel-start">
           <div style="width:203px;margin-right:20px">
             <div class="ma-t30">订单类型总数量</div>
@@ -138,14 +119,13 @@
             </el-table>
           </div>
         </div>
-        <!-- 实时数据 E -->
       </div>
       <div class="o-right">
-        <div class="show-code text-center">
+        <!-- <div class="show-code text-center">
           <div class="ma-t20">手机查看小程序数据</div>
           <img src="../../assets/img/qrcode-wx.png" width="170px" alt>
-        </div>
-        <div class="show-code text-center ma-t30">
+        </div>-->
+        <div class="show-code text-center">
           <div class="ma-t20">小程序二维码</div>
           <img src="../../assets/img/qrcode.jpg" width="160px" alt>
         </div>
@@ -154,5 +134,5 @@
   </div>
 </template>
 <script>
-export default require("./overview.js");
+export default require("./agentview.js");
 </script>

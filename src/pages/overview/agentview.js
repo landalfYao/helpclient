@@ -6,8 +6,6 @@ let list = {
       newData: [],
       newData2: [],
       msg: {},
-      orderData: [],
-      orderData2: []
     }
   },
   mounted() {
@@ -17,22 +15,22 @@ let list = {
   methods: {
     initTotalData() {
       this.totalData = [{
-          label: '用户总数',
-          value: that.msg.wxuserTotal,
+          label: '接单用户',
+          value: this.msg.userPass || 0,
           icon: 'md-people',
           style: 'obg1',
           color: '#009933'
         },
         {
-          label: '学校总数',
-          value: that.msg.areaTotal,
+          label: '待审用户',
+          value: this.msg.userWait || 0,
           icon: 'ios-book',
           style: 'obg2',
           color: '#0066CC'
         },
         {
-          label: '接单人总数',
-          value: this.msg.userPass ? this.msg.userPass : 0,
+          label: '驳回用户',
+          value: this.msg.userBack || 0,
           icon: 'md-school',
           style: 'obg3',
           color: '#663399'
@@ -97,42 +95,23 @@ let list = {
         },
       ]
 
-      this.orderData = [{
-          label: '今日用户数',
-          value: this.msg.wxuserTotalDaily,
-          icon: 'ios-calendar',
-          color: '#0099CC'
-        },
-        {
-          label: '待审用户数',
-          value: this.msg.userWating ? this.msg.userWating : 0,
-          icon: 'ios-calendar',
-          color: '#0099CC'
-        },
-        {
-          label: '驳回用户数',
-          value: this.msg.userBack ? this.msg.userBack : 0,
-          icon: 'ios-calendar',
-          color: '#0099CC'
-        },
-        {
-          label: '联系站长',
-          value: '18267173607',
-          icon: 'ios-calendar',
-          color: '#0099CC'
-        },
-      ]
-
 
     },
     getAnalysisData() {
-
-      this.yzy.post('anlysis/get', {}, function (res) {
-        if (res.code == 1) {
-          that.msg = res.data
-          that.initTotalData()
-        }
-      })
+      if (global.analysis) {
+        that.msg = global.analysis
+        that.initTotalData()
+      } else {
+        this.yzy.post('anlysis/get/agent', {
+          a_id: sessionStorage.getItem('a_id')
+        }, function (res) {
+          if (res.code == 1) {
+            global.analysis = res.data
+            that.msg = res.data
+            that.initTotalData()
+          }
+        })
+      }
 
     }
   },
