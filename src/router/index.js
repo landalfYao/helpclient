@@ -39,6 +39,10 @@ import address from '../pages/address/address.vue'
 import addressEdit from '../pages/address/address_edit.vue'
 
 import agentview from '../pages/overview/agentview.vue'
+
+import wallet from '../pages/wallet/wallet.vue'
+
+
 Vue.use(Router)
 
 export default new Router({
@@ -170,6 +174,11 @@ export default new Router({
           path: '/updatepwd',
           name: '编辑地址',
           component: updatepwd
+        },
+        {
+          path: '/wallet',
+          name: '我的账户',
+          component: wallet
         },
       ]
     }
