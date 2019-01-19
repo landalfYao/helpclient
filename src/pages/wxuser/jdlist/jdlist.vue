@@ -2,7 +2,6 @@
   <div>
     <div class="panel-start wrap">
       <el-input
-        placeholder="搜索"
         v-for="(item,index) in searchList"
         v-model="item.value"
         :placeholder="item.label"
@@ -62,7 +61,7 @@
           </div>
         </template>
       </el-table-column>
-      <el-table-column label="昵称" prop="name"></el-table-column>
+      <el-table-column label="姓名" prop="name"></el-table-column>
       <el-table-column label="昵称">
         <template slot-scope="scope">
           <div>{{scope.row.nick_name ? scope.row.nick_name:'未授权'}}</div>
@@ -83,6 +82,11 @@
           <div>{{scope.row.nick_name ? scope.row.province + ' ' +scope.row.city:'未授权'}}</div>
         </template>
       </el-table-column>
+      <el-table-column  label="操作">
+        <template slot-scope="scope">
+          <el-button type="text" @click="tempname=scope.row.name,tempAid = scope.row.id,seevisable2=true" >查看数据</el-button>
+        </template>
+      </el-table-column>
     </el-table>
     <div class="panel-end">
       <el-pagination
@@ -95,8 +99,14 @@
         style="margin-top:15px"
       ></el-pagination>
     </div>
+    <el-dialog :title="tempname+'的数据'" :visible.sync="seevisable2" width="920px" center>
+      <wv :jdid="tempAid"></wv>
+    </el-dialog>
   </div>
 </template>
 <script>
-export default require("./jdlist.js");
+import wv from "../../overview/wxview.vue";
+let app = require("./jdlist.js");
+app.components = { wv};
+export default app;
 </script>

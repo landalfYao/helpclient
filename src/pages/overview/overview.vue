@@ -149,6 +149,10 @@
           <div class="ma-t20">小程序二维码</div>
           <img src="../../assets/img/qrcode.jpg" width="160px" alt>
         </div>
+        <div class="show-code text-center ma-t30">
+          <div class="ma-t20">公众号二维码</div>
+          <img src="../../assets/img/wx_qr.jpg" width="160px" alt>
+        </div>
       </div>
     </div>
   </div>

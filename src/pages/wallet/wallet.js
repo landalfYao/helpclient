@@ -21,6 +21,13 @@ let list = {
     this.getList()
   },
   methods: {
+    handleSizeChange(e) {
+      this.getList()
+    },
+    handleCurrentChange(e) {
+      this.query.pageIndex = e
+      this.getList()
+    },
     getMsg(){
       this.yzy.post('ct/get',{
         wheres:'type=2 and uid='+sessionStorage.getItem("uid"),

@@ -27,6 +27,17 @@
       <el-table-column prop="rate" label="收益率"></el-table-column>
       <el-table-column prop="total_fee" label="单笔金额"></el-table-column>
     </el-table>
+     <div class="panel-end">
+      <el-pagination
+        @size-change="handleSizeChange"
+        @current-change="handleCurrentChange"
+        :current-page.sync="query.pageIndex"
+        :page-size="query.pageSize"
+        layout="total,prev, pager, next, jumper"
+        :total="total"
+        style="margin-top:15px"
+      ></el-pagination>
+    </div>
   </div>
 </template>
 <script>

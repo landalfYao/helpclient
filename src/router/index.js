@@ -41,6 +41,7 @@ import addressEdit from '../pages/address/address_edit.vue'
 import agentview from '../pages/overview/agentview.vue'
 
 import wallet from '../pages/wallet/wallet.vue'
+import wxview from '../pages/overview/wxview.vue'
 
 
 Vue.use(Router)
@@ -179,6 +180,11 @@ export default new Router({
           path: '/wallet',
           name: '我的账户',
           component: wallet
+        },
+        {
+          path: '/wxview',
+          name: '接单用户数据',
+          component: wxview
         },
       ]
     }

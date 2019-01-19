@@ -2,6 +2,9 @@ let that;
 let list = {
   data() {
     return {
+      tempname:'',
+      seevisable2:false,
+      tempAid:'',
       multipleSelection: [],
       query: {
         tables: 'wxuser,userinfo',
