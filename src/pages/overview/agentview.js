@@ -130,6 +130,11 @@ let list = {
           }
           that.msg = res.data
           that.initTotalData()
+        }else{
+          that.$message({
+            type: 'error',
+            message: res.msg
+          })
         }
       })
 

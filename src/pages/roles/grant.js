@@ -77,7 +77,26 @@ let list = {
           message: '请选择'
         })
       } else {
-        this.yzy.post()
+        this.treeload = true
+        this.yzy.post('auth/grant',{
+          auth_ids:arr2.toString(),
+          role_id:this.$route.query.id
+        },function(res){
+          that.centerDialogVisible = false
+          that.treeload = false
+          if(res.code == 1){
+            that.$message({
+              type: 'success',
+              message: res.msg
+            })
+            that.getList()
+          }else{
+            that.$message({
+              type: 'error',
+              message: res.msg
+            })
+          }
+        })
       }
     },
     getAuth(index, cate_id) {
