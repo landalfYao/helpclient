@@ -64,7 +64,19 @@ let list = {
       }
     },
     submitNode() {
-      console.log(this.$refs.mtree.getCheckedKeys())
+      let arr = this.$refs.mtree.getCheckedKeys()
+      let arr2 = []
+      for (let i in arr) {
+        if (arr[i] != undefined) {
+          arr2.push(arr[i])
+        }
+      }
+      if (arr2.length == 0) {
+        that.$message({
+          type: 'error',
+          message: '请选择'
+        })
+      }
     },
     getAuth(index, cate_id) {
       this.treeload = true
@@ -77,6 +89,7 @@ let list = {
         if (res.code == 1) {
           for (let i in res.data.list) {
             res.data.list[i].label = res.data.list[i].auth_name + ' ' + res.data.list[i].auth_url
+            res.data.list[i].auid = res.data.list[i].id
           }
           that.cate[index].children = res.data.list
         } else {

@@ -44,7 +44,7 @@
         ref="mtree"
         :data="cate"
         show-checkbox
-        node-key="id"
+        node-key="auid"
         :props="cateProps"
         :default-expanded-keys="[1]"
         :lazy="true"
