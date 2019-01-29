@@ -10,8 +10,10 @@
         class="filter-input"
       ></el-input>
       <el-button-group>
-        <el-button type="ghost" @click="clear()">清除</el-button>
-        <el-button type="primary" @click="search()">搜索</el-button>
+        <router-link to="/role/list">
+          <el-button type="ghost" @click="clear()">返回</el-button>
+        </router-link>
+        {{title}}
       </el-button-group>
     </div>
 
@@ -19,6 +21,7 @@
       <div class="panel-between item-center">
         <el-button-group>
           <el-button type="danger" plain icon="el-icon-delete" @click="del()"></el-button>
+          <el-button type="primary" @click="centerDialogVisible = true,getCate()">赋予权限</el-button>
         </el-button-group>
         <el-select
           v-model="query.pageSize"
@@ -36,6 +39,23 @@
       </div>
     </div>
 
+    <el-dialog title="赋予权限" :visible.sync="centerDialogVisible" width="400px" center>
+      <el-tree
+        ref="mtree"
+        :data="cate"
+        show-checkbox
+        node-key="id"
+        :props="cateProps"
+        :default-expanded-keys="[1]"
+        :lazy="true"
+        @node-expand="nodeClick"
+      ></el-tree>
+      <span slot="footer" class="dialog-footer">
+        <el-button @click="centerDialogVisible = false">取 消</el-button>
+        <el-button type="primary" @click="submitNode">确 定</el-button>
+      </span>
+    </el-dialog>
+
     <el-table
       :data="tableData"
       ref="multipleTable"
@@ -47,15 +67,8 @@
     >
       <el-table-column type="selection" width="55"></el-table-column>
       <el-table-column prop="id" label="ID"></el-table-column>
-      <el-table-column prop="auth_name" label="名称"></el-table-column>
+      <el-table-column prop="auth_name" label="权限名称"></el-table-column>
       <el-table-column prop="auth_url" label="API"></el-table-column>
-      <el-table-column prop="remarks" label="备注"></el-table-column>
-      <el-table-column prop="cate_id" label="类目ID"></el-table-column>
-      <el-table-column label="操作">
-        <template slot-scope="scope">
-          <el-button type="text" @click="navTo('/auth/edit',scope.row)">修改</el-button>
-        </template>
-      </el-table-column>
     </el-table>
     <div class="panel-end">
       <el-pagination
@@ -71,5 +84,5 @@
   </div>
 </template>
 <script>
-export default require("./list.js");
+export default require("./grant.js");
 </script>

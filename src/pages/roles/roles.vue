@@ -19,6 +19,8 @@
       <div class="panel-between item-center">
         <el-button-group>
           <el-button type="danger" plain icon="el-icon-delete" @click="del()"></el-button>
+          <el-button type="success" plain @click="updateState('avaliable')">显示</el-button>
+          <el-button type="warning" plain @click="updateState('disable')">关闭</el-button>
         </el-button-group>
         <el-select
           v-model="query.pageSize"
@@ -46,14 +48,24 @@
       @selection-change="handleSelectionChange"
     >
       <el-table-column type="selection" width="55"></el-table-column>
+      <el-table-column prop="sort" label="序号"></el-table-column>
       <el-table-column prop="id" label="ID"></el-table-column>
-      <el-table-column prop="auth_name" label="名称"></el-table-column>
-      <el-table-column prop="auth_url" label="API"></el-table-column>
+      <el-table-column prop="role_name" label="名称"></el-table-column>
       <el-table-column prop="remarks" label="备注"></el-table-column>
-      <el-table-column prop="cate_id" label="类目ID"></el-table-column>
+      <el-table-column label="状态">
+        <template slot-scope="scope">
+          <el-tag
+            :type="scope.row.state == 0 ? 'success':'warning'"
+          >{{scope.row.state == 0 ? '可用':'禁用'}}</el-tag>
+        </template>
+      </el-table-column>
       <el-table-column label="操作">
         <template slot-scope="scope">
-          <el-button type="text" @click="navTo('/auth/edit',scope.row)">修改</el-button>
+          <el-button type="text" @click="navTo('/role/edit',scope.row)">修改</el-button>
+          <el-button
+            type="text"
+            @click="navTo('/auth/grant/list',{id:scope.row.id,title:scope.row.role_name})"
+          >查看权限</el-button>
         </template>
       </el-table-column>
     </el-table>
@@ -71,5 +83,5 @@
   </div>
 </template>
 <script>
-export default require("./list.js");
+export default require("./roles.js");
 </script>

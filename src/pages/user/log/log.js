@@ -5,7 +5,7 @@ let list = {
       multipleSelection: [],
       query: {
         wheres: '',
-        sorts: 'create_time asc',
+        sorts: 'create_time desc',
         pageIndex: 1,
         pageSize: 10
       },
@@ -13,7 +13,7 @@ let list = {
       pageSize: this.yzy.pageSize,
       total: 0,
       tableData: [],
-      searchList: this.yzy.initFilterSearch(['ID', '名称', 'url', '类目ID'], ['id', 'auth_name', 'auth_url', 'cate_id'])
+      searchList: this.yzy.initFilterSearch(['操作人ID', '操作时间', '描述', 'API', 'CODE', '操作表', '操作列'], ['uid', 'create_time', 'des', 'api_url', 'op_code', 'fi_table', 'table_id'])
     }
   },
   mounted() {
@@ -21,35 +21,7 @@ let list = {
     that.getList()
   },
   methods: {
-    del() {
-      this.$confirm('此操作将永久删除该文件, 是否继续?', '提示', {
-        confirmButtonText: '确定',
-        cancelButtonText: '取消',
-        type: 'warning'
-      }).then(() => {
-        that.yzy.post('auth/del', {
-          ids: that.filterIds()
-        }, function (res) {
-          if (res.code == 1) {
-            that.$message({
-              type: 'success',
-              message: res.msg
-            })
-            that.getList()
-          } else {
-            that.$message({
-              type: 'error',
-              message: res.msg
-            })
-          }
-        })
-      }).catch(() => {
-        this.$message({
-          type: 'info',
-          message: '已取消删除'
-        });
-      });
-    },
+
     navTo(path, row) {
       this.$router.push({
         path: path,
@@ -65,7 +37,7 @@ let list = {
       }
 
       this.query.wheres = sq + ' is_delete=0 '
-      this.yzy.post('auth/get', this.query, function (res) {
+      this.yzy.post('user/log/get', this.query, function (res) {
         if (res.code == 1) {
 
           that.tableData = res.data.list

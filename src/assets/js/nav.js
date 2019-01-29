@@ -1,6 +1,5 @@
 const nav = {
-  topNav: [
-    {
+  topNav: [{
       label: "平台管理",
       path: "item1"
     },
@@ -10,22 +9,18 @@ const nav = {
     }
   ],
   //dtype 1 仅管理管  2 仅城市代理  3仅校园代理  4 全部 -1 城市和校园
-  item1: [
-    {
+  item1: [{
       label: "总览",
-      sub: [
-        {
-          label: "平台总览",
-          path: "/overview",
-          icon: "ios-podium-outline"
-        }
-      ]
+      sub: [{
+        label: "平台总览",
+        path: "/overview",
+        icon: "ios-podium-outline"
+      }]
     },
     {
       label: "代理商",
       dtype: 1,
-      sub: [
-        {
+      sub: [{
           label: "代理商列表",
           path: "/agent",
           icon: "ios-calendar-outline"
@@ -46,8 +41,7 @@ const nav = {
     {
       label: "代理地区",
       dtype: 1,
-      sub: [
-        {
+      sub: [{
           label: "代理地列表",
           path: "/area",
           icon: "ios-calendar-outline"
@@ -62,19 +56,16 @@ const nav = {
     {
       label: "微信用户",
       dtype: 1,
-      sub: [
-        {
-          label: "用户列表",
-          path: "/wxuser_LIST",
-          icon: "ios-podium-outline"
-        }
-      ]
+      sub: [{
+        label: "用户列表",
+        path: "/wxuser_LIST",
+        icon: "ios-podium-outline"
+      }]
     },
     {
       label: "订单管理",
       dtype: -1,
-      sub: [
-        {
+      sub: [{
           label: "快递代取订单",
           path: "/daiqu",
           icon: "ios-list-box-outline"
@@ -93,62 +84,70 @@ const nav = {
     },
     {
       label: "我的账户",
-      sub: [
-        {
-          label: "我的账户",
-          path: "/wallet",
-          icon: "ios-list-box-outline"
-        }
-      ]
+      sub: [{
+        label: "我的账户",
+        path: "/wallet",
+        icon: "ios-list-box-outline"
+      }]
     }
   ],
-  item2: [
-    {
-      label: "项目管理",
-      sub: [
-        {
-          label: "项目列表",
-          path: "/dayin",
-          icon: "ios-list-box-outline"
-        }
-      ]
+  item2: [{
+      label: "角色管理",
+      sub: [{
+        label: "角色列表",
+        path: "/role/list",
+        icon: "ios-list-box-outline"
+      }, {
+        label: "新增角色",
+        path: "/role/edit",
+        icon: "ios-list-box-outline"
+      }]
     },
     {
-      label: "员工管理",
-      sub: [
-        {
-          label: "经纪人",
-          path: "/",
+      label: "权限管理",
+      sub: [{
+          label: "权限列表",
+          path: "/auth/list",
           icon: "ios-person-outline"
         },
         {
-          label: "业务员",
-          path: "/",
+          label: "权限类目列表",
+          path: "/auth/cate/list",
           icon: "ios-person-add-outline"
         },
         {
-          label: "管理员",
-          path: "/",
+          label: "新增权限",
+          path: "/auth/edit",
           icon: "ios-person-add-outline"
-        }
+        },
+        {
+          label: "新增权限类目",
+          path: "/auth/cate/edit",
+          icon: "ios-person-add-outline"
+        },
+      ]
+    }, {
+      label: "日志管理",
+      sub: [{
+          label: "日志列表",
+          path: "/user/log",
+          icon: "ios-person-outline"
+        },
+
       ]
     }
   ],
-  daili1: [
-    {
+  daili1: [{
       label: "总览",
-      sub: [
-        {
-          label: "代理总览",
-          path: "/agentview",
-          icon: "ios-podium-outline"
-        }
-      ]
+      sub: [{
+        label: "代理总览",
+        path: "/agentview",
+        icon: "ios-podium-outline"
+      }]
     },
     {
       label: "接单员管理",
-      sub: [
-        {
+      sub: [{
           label: "接单员列表",
           path: "/jdlist",
           icon: "ios-list-box-outline"
@@ -162,8 +161,7 @@ const nav = {
     },
     {
       label: "订单管理",
-      sub: [
-        {
+      sub: [{
           label: "快递代取订单",
           path: "/daiqu",
           icon: "ios-list-box-outline"
@@ -182,8 +180,7 @@ const nav = {
     },
     {
       label: "地址管理",
-      sub: [
-        {
+      sub: [{
           label: "地址分组",
           path: "/address_cate",
           icon: "ios-list-box-outline"
@@ -208,23 +205,19 @@ const nav = {
 
     {
       label: "设置",
-      sub: [
-        {
-          label: "代理设置",
-          path: "/user/info",
-          icon: "ios-list-box-outline"
-        }
-      ]
+      sub: [{
+        label: "代理设置",
+        path: "/user/info",
+        icon: "ios-list-box-outline"
+      }]
     },
     {
       label: "我的账户",
-      sub: [
-        {
-          label: "我的账户",
-          path: "/wallet",
-          icon: "ios-list-box-outline"
-        }
-      ]
+      sub: [{
+        label: "我的账户",
+        path: "/wallet",
+        icon: "ios-list-box-outline"
+      }]
     }
   ]
 };

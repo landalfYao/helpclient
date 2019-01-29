@@ -5,7 +5,7 @@ let list = {
       multipleSelection: [],
       query: {
         wheres: '',
-        sorts: 'create_time asc',
+        sorts: 'sort asc',
         pageIndex: 1,
         pageSize: 10
       },
@@ -13,7 +13,7 @@ let list = {
       pageSize: this.yzy.pageSize,
       total: 0,
       tableData: [],
-      searchList: this.yzy.initFilterSearch(['ID', '名称', 'url', '类目ID'], ['id', 'auth_name', 'auth_url', 'cate_id'])
+      searchList: this.yzy.initFilterSearch(['ID', '名称'], ['id', 'role_name'])
     }
   },
   mounted() {
@@ -27,7 +27,7 @@ let list = {
         cancelButtonText: '取消',
         type: 'warning'
       }).then(() => {
-        that.yzy.post('auth/del', {
+        that.yzy.post('role/del', {
           ids: that.filterIds()
         }, function (res) {
           if (res.code == 1) {
@@ -65,9 +65,8 @@ let list = {
       }
 
       this.query.wheres = sq + ' is_delete=0 '
-      this.yzy.post('auth/get', this.query, function (res) {
+      this.yzy.post('role/get', this.query, function (res) {
         if (res.code == 1) {
-
           that.tableData = res.data.list
           that.total = res.data.total
         } else {
@@ -78,7 +77,32 @@ let list = {
         }
       })
     },
+    updateState(show) {
+      if (this.multipleSelection.length == 0) {
+        that.$message({
+          type: 'warning',
+          message: '您还没有选择任何一项'
+        })
+      } else {
+        this.yzy.post('role/' + show, {
+          ids: this.filterIds().toString()
+        }, function (res) {
+          if (res.code == 1) {
+            that.$message({
+              type: 'success',
+              message: res.msg
+            })
+            that.getList()
+          } else {
+            that.$message({
+              type: 'error',
+              message: res.msg
+            })
+          }
+        })
+      }
 
+    },
     filterIds() {
       let arr = []
       for (let i in this.multipleSelection) {

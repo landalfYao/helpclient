@@ -10,6 +10,15 @@ import userInfo from '../pages/user/info/info.vue'
 
 //权限模块
 import authList from '../pages/auth/list/list.vue'
+import authEdit from '../pages/auth/edit/edit.vue'
+import authCateEdit from '../pages/auth/cate/edit.vue'
+import authCateList from '../pages/auth/cate/cate.vue'
+import userlog from '../pages/user/log/log.vue'
+import grantList from '../pages/roles/grant.vue'
+
+//角色模块
+import roles from '../pages/roles/roles.vue'
+import rolesEdit from '../pages/roles/roles_edit.vue'
 
 //平台总览
 import overview from '../pages/overview/overview.vue'
@@ -67,6 +76,11 @@ export default new Router({
           component: userList
         },
         {
+          path: '/user/log',
+          name: '用户日志列表',
+          component: userlog
+        },
+        {
           path: '/user/info',
           name: '用户信息',
           component: userInfo
@@ -80,6 +94,36 @@ export default new Router({
           path: '/auth/list',
           name: '权限列表',
           component: authList
+        },
+        {
+          path: '/auth/cate/list',
+          name: '权限类目列表',
+          component: authCateList
+        },
+        {
+          path: '/auth/edit',
+          name: '编辑权限',
+          component: authEdit
+        },
+        {
+          path: '/auth/cate/edit',
+          name: '编辑权限类目',
+          component: authCateEdit
+        },
+        {
+          path: '/auth/grant/list',
+          name: '角色权限列表',
+          component: grantList
+        },
+        {
+          path: '/role/list',
+          name: '角色列表',
+          component: roles
+        },
+        {
+          path: '/role/edit',
+          name: '编辑角色',
+          component: rolesEdit
         },
         {
           path: '/updatepwd',

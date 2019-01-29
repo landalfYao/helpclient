@@ -18,7 +18,9 @@
     <div style="margin-top:15px">
       <div class="panel-between item-center">
         <el-button-group>
-          <el-button type="danger" plain icon="el-icon-delete" @click="del()"></el-button>
+          <!-- <el-button type="danger" plain icon="el-icon-delete" @click="del()"></el-button>
+          <el-button type="success" plain @click="updateState('onShow')">显示</el-button>
+          <el-button type="warning" plain @click="updateState('unShow')">关闭</el-button>-->
         </el-button-group>
         <el-select
           v-model="query.pageSize"
@@ -45,17 +47,13 @@
       style="width: 100%;margin-top:15px"
       @selection-change="handleSelectionChange"
     >
-      <el-table-column type="selection" width="55"></el-table-column>
-      <el-table-column prop="id" label="ID"></el-table-column>
-      <el-table-column prop="auth_name" label="名称"></el-table-column>
-      <el-table-column prop="auth_url" label="API"></el-table-column>
-      <el-table-column prop="remarks" label="备注"></el-table-column>
-      <el-table-column prop="cate_id" label="类目ID"></el-table-column>
-      <el-table-column label="操作">
-        <template slot-scope="scope">
-          <el-button type="text" @click="navTo('/auth/edit',scope.row)">修改</el-button>
-        </template>
-      </el-table-column>
+      <el-table-column prop="uid" label="操作人ID"></el-table-column>
+      <el-table-column prop="create_time" label="操作时间"></el-table-column>
+      <el-table-column prop="des" label="描述"></el-table-column>
+      <el-table-column prop="api_url" label="API"></el-table-column>
+      <el-table-column prop="op_code" label="操作CODE"></el-table-column>
+      <el-table-column prop="fi_table" label="操作表"></el-table-column>
+      <el-table-column prop="table_id" label="操作列"></el-table-column>
     </el-table>
     <div class="panel-end">
       <el-pagination
@@ -71,5 +69,5 @@
   </div>
 </template>
 <script>
-export default require("./list.js");
+export default require("./log.js");
 </script>
