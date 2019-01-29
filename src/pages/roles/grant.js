@@ -76,6 +76,8 @@ let list = {
           type: 'error',
           message: '请选择'
         })
+      } else {
+        this.yzy.post()
       }
     },
     getAuth(index, cate_id) {
