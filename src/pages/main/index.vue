@@ -34,10 +34,10 @@
             </el-button>
             <el-dropdown-menu slot="dropdown">
               <el-dropdown-item>
-                <div class="dropdown-item" @click="navTo('user/info')">我的信息</div>
+                <div class="dropdown-item" @click="navTo('/user/info')">我的信息</div>
               </el-dropdown-item>
               <el-dropdown-item>
-                <div class="dropdown-item" @click="navTo('updatepwd')">修改密码</div>
+                <div class="dropdown-item" @click="navTo('/updatepwd')">修改密码</div>
               </el-dropdown-item>
               <el-dropdown-item>
                 <div class="dropdown-item fo-danger" @click="logout()">退出登录</div>
