@@ -117,9 +117,8 @@ let list = {
       }
     },
     getAnalysisData() {
-
       this.yzy.post('anlysis/get/agent', {
-        a_id: this.aid ? this.aid : sessionStorage.getItem('a_id')
+        a_id: this.aid 
       }, function (res) {
         if (res.code == 1) {
 
@@ -137,8 +136,6 @@ let list = {
           })
         }
       })
-
-
     }
   },
 
