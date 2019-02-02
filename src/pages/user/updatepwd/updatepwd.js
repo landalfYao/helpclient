@@ -1,4 +1,4 @@
-
+ 
 let that ;
 let list = {
   data(){
