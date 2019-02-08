@@ -72,70 +72,46 @@
             </div>
           </div>
         </div>
-        <div class="panel-start">
-          <div style="width:203px;margin-right:20px">
-            <div class="ma-t30">订单类型总数量</div>
-            <el-table
-              :data="msg.orderType"
-              ref="multipleTable"
-              tooltip-effect="dark"
-              border
-              size="small"
-              style="width: 100%;margin-top:8px"
-            >
-              <el-table-column prop="title" label="类型"></el-table-column>
-              <el-table-column prop="total" label="数量"></el-table-column>
-            </el-table>
+        
+        <div  style="margin-top:30px">
+          
+          <div style="width:880px;padding-top:20px" class="border-t ">
+            <div class="fo-32 bold">订单状态数据分析</div>
+            <div class="ma-t30 ">
+              <el-select v-model="sbtype" placeholder="请选择" style="width:110px">
+                <el-option label="按月查询" value="month"> </el-option>
+                <el-option label="按年查询" value="year"> </el-option>
+              </el-select>
+              
+              <el-date-picker
+                v-model="sbdate"
+                :type="sbtype"
+                @change="sbchange"
+                :placeholder="sbtype == 'month'?'选择月':'选择年'">
+              </el-date-picker>
+            </div>
+            <div id="orderNode" style="margin-top:20px"></div>
           </div>
-          <div style="width:203px;margin-right:20px">
-            <div class="ma-t30">订单类型月度数量</div>
-            <el-table
-              :data="msg.orderTypeMonth"
-              ref="multipleTable"
-              tooltip-effect="dark"
-              border
-              size="small"
-              style="width: 100%;margin-top:8px"
-            >
-              <el-table-column prop="title" label="类型"></el-table-column>
-              <el-table-column prop="total" label="数量"></el-table-column>
-            </el-table>
-          </div>
-          <div style="width:203px;margin-right:20px">
-            <div class="ma-t30">订单总数量</div>
-            <el-table
-              :data="msg.order"
-              ref="multipleTable"
-              tooltip-effect="dark"
-              border
-              size="small"
-              style="width: 100%;margin-top:8px"
-            >
-              <el-table-column prop="state" label="状态">
-                <template slot-scope="scope">
-                  <div>{{scope.row.state == 0?'待付款':scope.row.state == 1?'已付款':scope.row.state == 2?'已接单':scope.row.state == 3?'已完成':'已取消'}}</div>
-                </template>
-              </el-table-column>
-              <el-table-column prop="total" label="数量"></el-table-column>
-            </el-table>
-          </div>
-          <div style="width:203px;margin-right:20px">
-            <div class="ma-t30">订单月度数量</div>
-            <el-table
-              :data="msg.orderMonth"
-              ref="multipleTable"
-              tooltip-effect="dark"
-              border
-              size="small"
-              style="width: 100%;margin-top:8px"
-            >
-              <el-table-column prop="state" label="状态">
-                <template slot-scope="scope">
-                  <div>{{scope.row.state == 0?'待付款':scope.row.state == 1?'已付款':scope.row.state == 2?'已接单':scope.row.state == 3?'已完成':'已取消'}}</div>
-                </template>
-              </el-table-column>
-              <el-table-column prop="total" label="数量"></el-table-column>
-            </el-table>
+        </div>
+
+        <div  style="margin-top:30px">
+          
+          <div style="width:880px;padding-top:20px" class="border-t ">
+            <div class="fo-32 bold">订单类型数据分析</div>
+            <div class="ma-t30 ">
+              <el-select v-model="sbtype2" placeholder="请选择" style="width:110px">
+                <el-option label="按月查询" value="month"> </el-option>
+                <el-option label="按年查询" value="year"> </el-option>
+              </el-select>
+              
+              <el-date-picker
+                v-model="sbdate2"
+                :type="sbtype2"
+                @change="sbchange2"
+                :placeholder="sbtype2 == 'month'?'选择月':'选择年'">
+              </el-date-picker>
+            </div>
+            <div id="mountNode" style="margin-top:20px"></div>
           </div>
         </div>
         <!-- 实时数据 E -->
@@ -160,3 +136,47 @@
 <script>
 export default require("./overview.js");
 </script>
+<style>
+.custom-tooltip {
+  width: 100% !important;
+  height: 10% !important;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+}
+
+.custom-tooltip-item {
+  width: 150px;
+  height: 50px;
+  position: relative;
+  float: left;
+  margin-left: 20px;
+  border-left-style: solid;
+  border-left-width: 5px;
+}
+
+.custom-tooltip-item:first-child {
+  margin-left: 0;
+}
+
+.custom-tooltip-item-name {
+  width: 80%;
+  height: 20px;
+  position: absolute;
+  top: 0px;
+  left: 10px;
+  color: rgba(0, 0, 0, 0.45);
+  font-size: 14px;
+}
+
+.custom-tooltip-item-value {
+  width: 80%;
+  height: 30px;
+  position: absolute;
+  bottom: 0px;
+  left: 10px;
+  color: #262626;
+  font-size: 22px;
+  /*font-weight: bold*/
+}
+</style>

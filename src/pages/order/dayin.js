@@ -26,6 +26,24 @@ let list = {
     that.getJDUser()
   },
   methods: {
+    wcclick(id){
+      this.yzy.post('help/confirm', {
+        id: id,
+      }, function (res) {
+        if (res.code == 1) {
+          that.$message({
+            type: 'success',
+            message: '操作成功'
+          })
+          that.getList()
+        } else {
+          that.$message({
+            type: 'error',
+            message: res.msg
+          })
+        }
+      })
+    },
     download(e) {
       window.location.href = 'https://hapi.ypyzy.top/uploads/files/' + e
     },

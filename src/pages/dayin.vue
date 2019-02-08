@@ -5,7 +5,7 @@
         class="avatar-uploader"
         style="margin:auto"
         :action="api+'file/upload'"
-        :show-file-list="false"
+        :show-file-list="true"
         :data="{wx_id:wx_id}"
         :on-success="handleAvatarSuccess"
         name="file"
