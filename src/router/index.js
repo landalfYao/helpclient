@@ -54,6 +54,10 @@ import agentview from '../pages/overview/agentview.vue'
 import wallet from '../pages/wallet/wallet.vue'
 import wxview from '../pages/overview/wxview.vue'
 
+//轮播图
+import calousels from '../pages/calousels/calousels.vue'
+import calouselsEdit from '../pages/calousels/calousels_edit.vue'
+
 
 Vue.use(Router)
 
@@ -236,6 +240,16 @@ export default new Router({
           path: '/wxview',
           name: '接单用户数据',
           component: wxview
+        },
+        {
+          path: '/calousels',
+          name: '轮播图',
+          component: calousels
+        },
+        {
+          path: '/calousels/edit',
+          name: '轮播图编辑',
+          component: calouselsEdit
         },
       ]
     }

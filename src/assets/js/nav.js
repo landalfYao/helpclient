@@ -4,6 +4,10 @@ const nav = {
       path: "item1"
     },
     {
+      label: "广告营销",
+      path: "item3"
+    },
+    {
       label: "内部管理",
       path: "item2"
     }
@@ -136,6 +140,40 @@ const nav = {
 
       ]
     }
+  ],
+  item3:[
+    {
+      label: "轮播图",
+      sub: [{
+        label: "首页广告图",
+        path: "/calousels",
+        icon: "ios-podium-outline"
+      },{
+        label: "新增广告图",
+        path: "/calousels/edit",
+        icon: "ios-podium-outline"
+      }]
+    },
+    {
+      label: "专题",
+      sub: [{
+        label: "专题列表",
+        path: "/agentview",
+        icon: "ios-podium-outline"
+      }]
+    },
+    {
+      label: "素材管理",
+      sub: [{
+        label: "图库",
+        path: "/gallery",
+        icon: "ios-podium-outline"
+      },{
+        label: "富文本",
+        path: "/richtext",
+        icon: "ios-podium-outline"
+      }]
+    },
   ],
   daili1: [{
       label: "总览",
