@@ -8,6 +8,8 @@ import userList from '../pages/user/list/list.vue'
 import updatepwd from '../pages/user/updatepwd/updatepwd.vue'
 import userInfo from '../pages/user/info/info.vue'
 
+import gallery from '../pages/file/gallery.vue'
+
 //权限模块
 import authList from '../pages/auth/list/list.vue'
 import authEdit from '../pages/auth/edit/edit.vue'
@@ -84,6 +86,11 @@ export default new Router({
           path: '/user/info',
           name: '用户信息',
           component: userInfo
+        },
+        {
+          path: '/gallery',
+          name: '图库',
+          component: gallery
         },
         {
           path: '/agentview',
