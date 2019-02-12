@@ -5,11 +5,27 @@
     label-width="80px"
     style="width:400px;margin:auto;margin-top:50px"
   >
-    <el-form-item label="名称">
-      <el-input v-model="formData.role_name" placeholder="类目名称"></el-input>
+    <el-form-item label="封面">
+      <el-button type="primary">选择一张封面</el-button>
+    </el-form-item>
+    <el-form-item label="广告公司">
+      <el-input v-model="formData.company" placeholder="广告公司"></el-input>
+    </el-form-item>
+    <el-form-item label="跳转路径">
+      <el-select v-model="formData.path" placeholder="请选择" style="width:100%">
+        <el-option
+          v-for="(item,index) in urls"
+          :key="index"
+          :label="item.label"
+          :value="item.path">
+        </el-option>
+      </el-select>
+    </el-form-item>
+    <el-form-item label="跳转参数">
+      <el-input v-model="formData.params" placeholder="跳转参数"></el-input>
     </el-form-item>
     <el-form-item label="备注">
-      <el-input v-model="formData.remarks" placeholder="备注"></el-input>
+      <el-input v-model="formData.remark" placeholder="备注"></el-input>
     </el-form-item>
     <el-form-item label="序号">
       <el-input v-model="formData.sort" placeholder="序号"></el-input>
@@ -23,5 +39,8 @@
   </el-form>
 </template>
 <script>
-export default require("./calousels_edit.js");
+import gallery from '../file/gallery.vue'
+let app = require("./calousels_edit.js")
+app.components = {gallery}
+export default app;
 </script>
