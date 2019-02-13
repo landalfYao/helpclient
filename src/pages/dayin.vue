@@ -4,9 +4,10 @@
       <el-upload
         class="avatar-uploader"
         style="margin:auto"
-        :action="api+'file/upload'"
+        :action="'https://hapi.ypyzy.top/api/file/upload'"
         :show-file-list="true"
         :data="{wx_id:wx_id}"
+        :before-upload="bup"
         :on-success="handleAvatarSuccess"
         name="file"
       >
@@ -51,6 +52,9 @@ export default {
     }
   },
   methods: {
+    bup() {
+      this.loading = true;
+    },
     navBack() {
       window.history.go(-1);
     },
@@ -58,12 +62,12 @@ export default {
       this.init();
     },
     init() {
-      let total = 0;
-      total += parseFloat(this.price[2]);
-      this.formData.cai
-        ? (total += parseFloat(this.price[1]) * parseFloat(this.formData.num))
-        : (total += parseFloat(this.price[0]) * parseFloat(this.formData.num));
-      this.formData.total_fee = total.toFixed(2);
+      // let total = 0;
+      // total += parseFloat(this.price[2]);
+      // this.formData.cai
+      //   ? (total += parseFloat(this.price[1]) * parseFloat(this.formData.num))
+      //   : (total += parseFloat(this.price[0]) * parseFloat(this.formData.num));
+      // this.formData.total_fee = total.toFixed(2);
     },
     submit() {
       if (
@@ -78,8 +82,9 @@ export default {
     handleAvatarSuccess(e) {
       if (e.code == 1) {
         this.cg = true;
+        window.history.go(-1);
       }
-      loading = false;
+      this.loading = false;
     }
   }
 };
