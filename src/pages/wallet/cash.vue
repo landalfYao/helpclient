@@ -18,9 +18,7 @@
     <div style="margin-top:15px">
       <div class="panel-between item-center">
         <el-button-group>
-          <el-button type="danger" plain icon="el-icon-delete" @click="del()"></el-button>
-          <el-button type="success" plain @click="updateState('show')">显示</el-button>
-          <el-button type="warning" plain @click="updateState('unshow')">关闭</el-button>
+          <!-- <el-button type="danger" plain icon="el-icon-delete" @click="del()"></el-button> -->
         </el-button-group>
         <el-select
           v-model="query.pageSize"
@@ -48,22 +46,29 @@
       @selection-change="handleSelectionChange"
     >
       <el-table-column type="selection" width="55"></el-table-column>
-      <el-table-column prop="sort" label="序号"></el-table-column>
-      <el-table-column prop="id" label="ID"></el-table-column>
-      <el-table-column prop="role_name" label="名称"></el-table-column>
-      <el-table-column prop="remarks" label="备注"></el-table-column>
+      <el-table-column prop="trade_no" label="单号">
+        <template slot-scope="scope">
+          <div>{{scope.row.trade_no || '——'}}</div>
+        </template>
+      </el-table-column>
+      <el-table-column prop="realname" label="姓名"></el-table-column>
+      <el-table-column prop="schoolName" label="所在学校"></el-table-column>
+      <el-table-column prop="phone" label="手机号"></el-table-column>
+      <el-table-column prop="cash_fee" label="金额">
+        <template slot-scope="scope">
+          <div>{{scope.row.cash_fee}}元</div>
+        </template>
+      </el-table-column>
+      <el-table-column prop="msg" label="提现信息"></el-table-column>
+
       <el-table-column label="状态">
         <template slot-scope="scope">
-          <el-tag
-            :type="scope.row.is_show == 0 ? 'success':'warning'"
-          >{{scope.row.state == 0 ? '显示':'关闭'}}</el-tag>
+          <el-tag v-if="scope.row.state == 1" type="success">提现成功</el-tag>
+          <el-tag v-if="scope.row.state == 2" type="warning">提现异常</el-tag>
+          <el-tag v-if="scope.row.state == 3" type="danger">提现失败</el-tag>
         </template>
       </el-table-column>
-      <el-table-column label="操作">
-        <template slot-scope="scope">
-          <el-button type="text" @click="navTo('/calousels/edit',scope.row)">修改</el-button>
-        </template>
-      </el-table-column>
+      <el-table-column prop="create_time" label="提现时间"></el-table-column>
     </el-table>
     <div class="panel-end">
       <el-pagination
@@ -79,6 +84,5 @@
   </div>
 </template>
 <script>
-let app = require("./calousels.js");
-export default app;
+export default require("./cash.js");
 </script>

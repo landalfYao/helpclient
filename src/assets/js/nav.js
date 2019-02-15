@@ -93,6 +93,13 @@ const nav = {
         path: "/wallet",
         icon: "ios-list-box-outline"
       }]
+    }, {
+      label: "提现记录",
+      sub: [{
+        label: "提现记录",
+        path: "/cash",
+        icon: "ios-list-box-outline"
+      }]
     }
   ],
   item2: [{
@@ -141,14 +148,13 @@ const nav = {
       ]
     }
   ],
-  item3:[
-    {
+  item3: [{
       label: "轮播图",
       sub: [{
         label: "首页广告图",
         path: "/calousels",
         icon: "ios-podium-outline"
-      },{
+      }, {
         label: "新增广告图",
         path: "/calousels/edit",
         icon: "ios-podium-outline"
@@ -168,7 +174,7 @@ const nav = {
         label: "图库",
         path: "/gallery",
         icon: "ios-podium-outline"
-      },{
+      }, {
         label: "富文本",
         path: "/richtext",
         icon: "ios-podium-outline"

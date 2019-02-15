@@ -3,7 +3,7 @@ let list = {
   data() {
     return {
       group_id: null,
-      fileData: { },
+      fileData: {},
       cates: [],
       page: 1,
       total: 0,
@@ -17,7 +17,8 @@ let list = {
       listload: false,
       fileList: [],
       list: [],
-      headers:{
+
+      headers: {
         token: sessionStorage.getItem("token"),
         uid: sessionStorage.getItem("uid")
       },
@@ -28,10 +29,10 @@ let list = {
       }
     };
   },
-  props:{
-    clear:{
-      type:Boolean,
-      default:false
+  props: {
+    clear: {
+      type: Boolean,
+      default: false
     }
   },
   mounted() {
@@ -39,8 +40,9 @@ let list = {
     this.getCate();
     this.getFile();
   },
-  watch:{
-    clear(){
+  watch: {
+    clear() {
+
       this.initCheck()
       global.cimgs = []
     }
@@ -62,38 +64,38 @@ let list = {
           type: "warning"
         });
       } else {
-          that.yzy.post('ptfile/update',{
-              group_id:id,
-              ids:this.getChecked()
-          },function(res){
-            if (res.code == 1) {
-                if (that.activeIndex != -1) {
-                  that.getFile();
-                }
-                that.initCheck();
-                that.$message({
-                  showClose: true,
-                  message: res.msg,
-                  type: "success"
-                });
-              } else {
-                that.$message({
-                  showClose: true,
-                  message: res.msg,
-                  type: "error"
-                });
-              }
-          })
-        
+        that.yzy.post('ptfile/update', {
+          group_id: id,
+          ids: this.getChecked()
+        }, function (res) {
+          if (res.code == 1) {
+            if (that.activeIndex != -1) {
+              that.getFile();
+            }
+            that.initCheck();
+            that.$message({
+              showClose: true,
+              message: res.msg,
+              type: "success"
+            });
+          } else {
+            that.$message({
+              showClose: true,
+              message: res.msg,
+              type: "error"
+            });
+          }
+        })
+
       }
     },
     handleSizeChange(e) {
-        this.getFile()
-      },
-      handleCurrentChange(e) {
-        this.page = e
-        this.getFile()
-      },
+      this.getFile()
+    },
+    handleCurrentChange(e) {
+      this.page = e
+      this.getFile()
+    },
     // changePage(e) {
     //   this.page = e;
     //   this.getFile();
@@ -105,7 +107,7 @@ let list = {
         this.list[e].checked = true;
       }
       global.cimgs = this.getChecked2()
-    //   sessionStorage.setItem('imgUrls',JSON.stringify(this.getChecked2()))
+      //   sessionStorage.setItem('imgUrls',JSON.stringify(this.getChecked2()))
     },
     getChecked() {
       var arr = [];
@@ -135,8 +137,7 @@ let list = {
       } else {
         this.$confirm(
           "此操作将永久删除该文件, 是否继续? 若误删请联系开发人员。",
-          "提示",
-          {
+          "提示", {
             confirmButtonText: "确定",
             cancelButtonText: "取消",
             type: "warning"
@@ -144,10 +145,10 @@ let list = {
         ).then(() => {
           that.delload = true;
           that.yzy
-            .post("ptfile/del" ,{
-                ids:that.getChecked()
-            },function(res){
-                that.delload = false;
+            .post("ptfile/del", {
+              ids: that.getChecked()
+            }, function (res) {
+              that.delload = false;
               if (res.code == 1) {
                 that.getFile();
                 that.$message({
@@ -163,33 +164,33 @@ let list = {
                 });
               }
             })
-           
+
         });
       }
     },
     getFile() {
       this.listload = true;
-      this.yzy.post('ptfile/get',{
-          pageSize:20,
-          pageIndex:this.page,
-          group_id: this.group_id
-      },function(res){
+      this.yzy.post('ptfile/get', {
+        pageSize: 20,
+        pageIndex: this.page,
+        group_id: this.group_id
+      }, function (res) {
         that.listload = false;
-          if (res.code == 1) {
-            for (let i in res.data.list) {
-              res.data.list[i].checked = false;
-            }
-            that.list = res.data.list;
-            that.total = res.data.total;
-          } else {
-            that.$message({
-              showClose: true,
-              message: res.msg,
-              type: "error"
-            });
+        if (res.code == 1) {
+          for (let i in res.data.list) {
+            res.data.list[i].checked = false;
           }
+          that.list = res.data.list;
+          that.total = res.data.total;
+        } else {
+          that.$message({
+            showClose: true,
+            message: res.msg,
+            type: "error"
+          });
+        }
       })
-     
+
     },
     handlePreview(file) {
       console.log(file);
@@ -219,7 +220,7 @@ let list = {
         this.activeIndex = -2;
       } else {
         this.activeIndex = e.substring(0, e.indexOf("-"));
-        this.group_id = '='+this.cates[this.activeIndex].id;
+        this.group_id = '=' + this.cates[this.activeIndex].id;
         this.submitData.id = this.cates[this.activeIndex].id
         data.group_id = this.group_id;
       }
@@ -228,50 +229,52 @@ let list = {
       this.activeMenu = e;
     },
     getCate() {
-        this.yzy.post('ptfile/group/get',{pageSize:1000,pageIndex:1},function(res){
-            if (res.code == 1) {
-                
-                that.cates = res.data.list;
-                if (!that.acStatus && that.activeIndex != -1) {
-                  that.activeMenu =
-                    that.activeIndex +
-                    "-" +
-                    that.cates[that.activeIndex].group_name;
-                }
-              } else {
-                that.$message({
-                  showClose: true,
-                  message: res.msg,
-                  type: "error"
-                });
-              }
-        })
-     
+      this.yzy.post('ptfile/group/get', {
+        pageSize: 1000,
+        pageIndex: 1
+      }, function (res) {
+        if (res.code == 1) {
+
+          that.cates = res.data.list;
+          if (!that.acStatus && that.activeIndex != -1) {
+            that.activeMenu =
+              that.activeIndex +
+              "-" +
+              that.cates[that.activeIndex].group_name;
+          }
+        } else {
+          that.$message({
+            showClose: true,
+            message: res.msg,
+            type: "error"
+          });
+        }
+      })
+
     },
     del() {
       this.$confirm(
         "此操作将永久删除该文件, 是否继续? 若误删请联系开发人员。",
-        "提示",
-        {
+        "提示", {
           confirmButtonText: "确定",
           cancelButtonText: "取消",
           type: "warning"
         }
       ).then(() => {
-          that.yzy.post('ptfile/group/del',{
-              ids:that.cates[that.activeIndex].id
-          },function(res){
-            if (res.code == 1) {
-                that.$message({
-                  showClose: true,
-                  message: res.msg,
-                  type: "success"
-                });
-                that.menuSelect("all");
-                that.getCate();
-              }
-          })
-        
+        that.yzy.post('ptfile/group/del', {
+          ids: that.cates[that.activeIndex].id
+        }, function (res) {
+          if (res.code == 1) {
+            that.$message({
+              showClose: true,
+              message: res.msg,
+              type: "success"
+            });
+            that.menuSelect("all");
+            that.getCate();
+          }
+        })
+
       });
     },
     submitCate() {
@@ -282,19 +285,19 @@ let list = {
       } else {
         url = "ptfile/group/update";
       }
-      this.yzy.post(url,this.submitData,function(res){
+      this.yzy.post(url, this.submitData, function (res) {
         that.loading = false;
-          that.addDialog = false;
-          if (res.code == 1) {
-            that.$message({
-              showClose: true,
-              message: res.msg,
-              type: "success"
-            });
-            that.getCate();
-          }
+        that.addDialog = false;
+        if (res.code == 1) {
+          that.$message({
+            showClose: true,
+            message: res.msg,
+            type: "success"
+          });
+          that.getCate();
+        }
       })
-      
+
     }
   }
 };

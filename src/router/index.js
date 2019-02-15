@@ -58,6 +58,9 @@ import wxview from '../pages/overview/wxview.vue'
 import calousels from '../pages/calousels/calousels.vue'
 import calouselsEdit from '../pages/calousels/calousels_edit.vue'
 
+//提现
+import cash from '../pages/wallet/cash.vue'
+
 
 Vue.use(Router)
 
@@ -250,6 +253,11 @@ export default new Router({
           path: '/calousels/edit',
           name: '轮播图编辑',
           component: calouselsEdit
+        },
+        {
+          path: '/cash',
+          name: '提现记录',
+          component: cash
         },
       ]
     }
