@@ -18,7 +18,8 @@ let main = {
   watch: {
     $route() {
       this.linkName = this.$route.name
-    }
+    },
+   
   },
   mounted() {
     document.title = this.yzy.systemName;

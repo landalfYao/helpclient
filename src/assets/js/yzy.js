@@ -10,8 +10,8 @@ const request = require("request");
 const yzy = {
   systemName: "互帮互助管理系统",
 
-  // NODE_API: "https://api.hbhzdtn.com/api/",
-  NODE_API: "http://localhost:3336/api/",
+  NODE_API: "https://api.hbhzdtn.com/api/",
+  // NODE_API: "http://localhost:3336/api/",
 
   pageSize: [{
       label: "每页10条",
@@ -105,12 +105,12 @@ const yzy = {
     });
   },
   //getToken
-  getToken(cb) {
+  getToken(cb) { 
     this.http(
       "user/login",
       "POST", {
         username: sessionStorage.getItem("username"),
-        password: sessionStorage.getItem("pwd")
+        password: global.pwd
       },
       function (res) {
         if (res.code == 1) {
@@ -121,6 +121,7 @@ const yzy = {
         }
       }
     );
+  
   },
   //post
   post(url, data, cb) {
@@ -129,12 +130,13 @@ const yzy = {
       "POST",
       data,
       function (res) {
-        if (res.code == -1) {
+        if (res.code == -1 || res.code == 101) {
           yzy.getToken(function (res2) {
             if (res2) {
               yzy.post(url, data, cb);
             } else {
               cb(res);
+
             }
           });
         } else {

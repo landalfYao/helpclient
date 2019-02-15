@@ -30,9 +30,10 @@ let login = {
           path: '/'
         })
         this.loading = true
+        let pwd = this.yzy.encrypt(this.formData.password)
         this.yzy.http('user/login', 'POST', {
           username: this.formData.username,
-          password: this.yzy.encrypt(this.formData.password)
+          password: pwd
         }, function (res) {
           that.loading = false
           if (res.code == 1) {
@@ -44,7 +45,7 @@ let login = {
             sessionStorage.setItem('uid', res.data.pk_id)
             sessionStorage.setItem('userInfo', res.data)
             sessionStorage.setItem('username', res.data.username)
-            sessionStorage.setItem('pwd', res.data.pwd)
+            global.pwd = pwd
             sessionStorage.setItem('dtype', res.data.dtype)
             sessionStorage.setItem('a_id', res.data.a_id)
             that.$router.push({
