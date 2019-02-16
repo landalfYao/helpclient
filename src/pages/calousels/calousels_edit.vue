@@ -13,6 +13,9 @@
           :style="'height:100px;width:268px;background-image:url('+formData.cover+');background-position:center;background-size:cover;background-color:#f3f3f3'"
         ></div>
       </el-form-item>
+      <el-form-item label="区域ID">
+        <el-input v-model="formData.a_id" placeholder="区域ID（必填）"></el-input>
+      </el-form-item>
       <el-form-item label="广告公司">
         <el-input v-model="formData.company" placeholder="广告公司"></el-input>
       </el-form-item>

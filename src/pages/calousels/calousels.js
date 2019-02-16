@@ -5,7 +5,7 @@ let list = {
       multipleSelection: [],
       query: {
         wheres: '',
-        sorts: 'sort asc',
+        sorts: 'sort asc,create_time desc',
         pageIndex: 1,
         pageSize: 10
       },
@@ -13,7 +13,7 @@ let list = {
       pageSize: this.yzy.pageSize,
       total: 0,
       tableData: [],
-      searchList: this.yzy.initFilterSearch(['ID', '公司名称'], ['id', 'company'])
+      searchList: this.yzy.initFilterSearch(['ID', '公司名称','区域ID'], ['id', 'company','a_id'])
     }
   },
   mounted() {

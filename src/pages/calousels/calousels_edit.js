@@ -3,19 +3,15 @@ let list = {
   data() {
     return {
       centerDialogVisible: false,
-      is_show: true,
+      is_show: false,
       api: this.yzy.NODE_API,
       urls: [{
-          label: '首页',
-          path: '/pages/index/index'
+          label: '关于我们',
+          path: '/pages/mine/about/about'
         },
         {
-          label: '去帮忙页',
-          path: '/pages/banzu/banzu'
-        },
-        {
-          label: '个人中心',
-          path: '/pages/mine/mine'
+          label: '提现',
+          path: '/pages/mine/cash/cash'
         },
         {
           label: '选择学校页',
@@ -76,7 +72,8 @@ let list = {
         path: '',
         company: '',
         end_time: '',
-        params: ''
+        params: '',
+        a_id:''
       },
       clear: false,
       formData2: {
@@ -87,7 +84,8 @@ let list = {
         remark: '',
         path: '',
         company: '',
-        end_time: ''
+        end_time: '',
+        a_id:''
       },
       loading: false
     }
@@ -96,6 +94,7 @@ let list = {
     that = this;
     if (this.$route.query.id) {
       this.formData = this.$route.query
+      this.is_show = this.$route.query.is_show == 1 ? true:false
     }
   },
   methods: {
@@ -108,7 +107,7 @@ let list = {
       this.loading = true
       let formData = this.formData
       this.formData.admin_id = sessionStorage.getItem("uid")
-      formData.is_show = this.is_show ? 0 : 1
+      formData.is_show = this.is_show ? 1 : 0
       if (this.formData.params) {
         formData.path += '?' + formData.params
       }

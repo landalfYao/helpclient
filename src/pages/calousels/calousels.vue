@@ -49,14 +49,24 @@
     >
       <el-table-column type="selection" width="55"></el-table-column>
       <el-table-column prop="sort" label="序号"></el-table-column>
-      <el-table-column prop="id" label="ID"></el-table-column>
-      <el-table-column prop="role_name" label="名称"></el-table-column>
-      <el-table-column prop="remarks" label="备注"></el-table-column>
+      <el-table-column prop="a_id" label="区域ID"></el-table-column>
+      <el-table-column label="图片">
+        <template slot-scope="scope">
+          <div>
+            <img :src="scope.row.cover" height="50px" alt="">
+          </div>
+        </template>
+      </el-table-column>
+      <el-table-column prop="company" label="公司"></el-table-column>
+      <el-table-column prop="path" label="跳转路径"> </el-table-column>
+      <el-table-column prop="end_time" label="结束时间"> </el-table-column> 
+      <el-table-column prop="create_time" label="创建时间"> </el-table-column>                                         
+      <el-table-column prop="remark" label="备注"></el-table-column>
       <el-table-column label="状态">
         <template slot-scope="scope">
           <el-tag
-            :type="scope.row.is_show == 0 ? 'success':'warning'"
-          >{{scope.row.state == 0 ? '显示':'关闭'}}</el-tag>
+            :type="scope.row.is_show == 1 ? 'success':'warning'"
+          >{{scope.row.is_show == 1 ? '显示':'关闭'}}</el-tag>
         </template>
       </el-table-column>
       <el-table-column label="操作">
