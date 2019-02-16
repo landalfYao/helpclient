@@ -61,6 +61,9 @@ import calouselsEdit from '../pages/calousels/calousels_edit.vue'
 //提现
 import cash from '../pages/wallet/cash.vue'
 
+//重要通知
+import emer from '../pages/user/updateemer/emer.vue'
+
 
 Vue.use(Router)
 
@@ -93,6 +96,11 @@ export default new Router({
           path: '/user/info',
           name: '用户信息',
           component: userInfo
+        },
+        {
+          path: '/user/emer',
+          name: '重要通知',
+          component: emer
         },
         {
           path: '/gallery',

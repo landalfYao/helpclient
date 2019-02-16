@@ -64,6 +64,15 @@ const nav = {
         label: "用户列表",
         path: "/wxuser_LIST",
         icon: "ios-podium-outline"
+      },{
+        label: "接单员列表",
+        path: "/jdlist",
+        icon: "ios-list-box-outline"
+      },
+      {
+        label: "审核列表",
+        path: "/shlist",
+        icon: "ios-list-box-outline"
       }]
     },
     {

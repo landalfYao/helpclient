@@ -6,7 +6,7 @@ let list = {
       query: {
         tables: 'wxuser,userinfo',
         fields: 'wxuser.*,userinfo.name,userinfo.card_num,userinfo.card_num,userinfo.cert,userinfo.stu_card,userinfo.id s_id,userinfo.state,userinfo.msg',
-        wheres: 'wxuser.id = userinfo.wx_id and userinfo.a_id=' + sessionStorage.getItem('a_id'),
+        wheres: 'wxuser.id = userinfo.wx_id ',
         sorts: 'userinfo.state asc,wxuser.create_time desc',
         pageIndex: 1,
         pageSize: 10
@@ -79,6 +79,9 @@ let list = {
         }
       }
       this.query.wheres = sq + this.query.wheres
+      if(sessionStorage.getItem('dtype') == 2){
+        this.query.wheres += ' and userinfo.a_id='+sessionStorage.getItem('a_id')
+      }
       this.yzy.post('wx/user/get/com', this.query, function (res) {
         if (res.code == 1) {
 
