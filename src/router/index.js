@@ -64,6 +64,11 @@ import cash from '../pages/wallet/cash.vue'
 //重要通知
 import emer from '../pages/user/updateemer/emer.vue'
 
+//richtext
+import richtext from '../components/richtext.vue'
+import richtext_edit from '../pages/richtext/richtext_edit.vue'
+import richtextList from '../pages/richtext/richtext.vue'
+
 
 Vue.use(Router)
 
@@ -86,6 +91,11 @@ export default new Router({
           path: '/user/list',
           name: '用户列表',
           component: userList
+        },
+        {
+          path: '/richtext',
+          name: '富文本编辑',
+          component: richtext
         },
         {
           path: '/user/log',
@@ -266,6 +276,16 @@ export default new Router({
           path: '/cash',
           name: '提现记录',
           component: cash
+        },
+        {
+          path: '/richtext/edit',
+          name: '文章编辑',
+          component: richtext_edit
+        },
+        {
+          path: '/richtext/list',
+          name: '文章列表',
+          component: richtextList
         },
       ]
     }
