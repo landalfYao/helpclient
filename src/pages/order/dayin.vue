@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="panel-start wrap">
+    <div class="panel-start">
       <el-input
         v-for="(item,index) in searchList"
         v-model="item.value"
@@ -76,7 +76,7 @@
       <el-table-column label="操作">
         <template slot-scope="scope">
           <el-button type="text" @click="jdclick(scope.row)" v-if="scope.row.state == 1">接单</el-button>
-          <el-button type="text" @click="wcclick(scope.row.id)" v-if="scope.row.state == 2">完成</el-button>          
+          <el-button type="text" @click="wcclick(scope.row.id)" v-if="scope.row.state == 2">完成</el-button>
           <el-button
             v-if="scope.row.state != 1 && scope.row.state != 0"
             type="text"

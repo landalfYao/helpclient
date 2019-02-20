@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="panel-start wrap">
+    <div class="panel-start">
       <el-input
         v-for="(item,index) in searchList"
         v-model="item.value"
@@ -53,14 +53,14 @@
       <el-table-column label="图片">
         <template slot-scope="scope">
           <div>
-            <img :src="scope.row.cover" height="50px" alt="">
+            <img :src="scope.row.cover" height="50px" alt>
           </div>
         </template>
       </el-table-column>
       <el-table-column prop="company" label="公司"></el-table-column>
-      <el-table-column prop="path" label="跳转路径"> </el-table-column>
-      <el-table-column prop="end_time" label="结束时间"> </el-table-column> 
-      <el-table-column prop="create_time" label="创建时间"> </el-table-column>                                         
+      <el-table-column prop="path" label="跳转路径"></el-table-column>
+      <el-table-column prop="end_time" label="结束时间"></el-table-column>
+      <el-table-column prop="create_time" label="创建时间"></el-table-column>
       <el-table-column prop="remark" label="备注"></el-table-column>
       <el-table-column label="状态">
         <template slot-scope="scope">

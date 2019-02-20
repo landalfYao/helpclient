@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="panel-start wrap">
+    <div class="panel-start">
       <el-input
         v-for="(item,index) in searchList"
         v-model="item.value"
@@ -82,9 +82,12 @@
           <div>{{scope.row.nick_name ? scope.row.province + ' ' +scope.row.city:'未授权'}}</div>
         </template>
       </el-table-column>
-      <el-table-column  label="操作">
+      <el-table-column label="操作">
         <template slot-scope="scope">
-          <el-button type="text" @click="tempname=scope.row.name,tempAid = scope.row.id,seevisable2=true" >查看数据</el-button>
+          <el-button
+            type="text"
+            @click="tempname=scope.row.name,tempAid = scope.row.id,seevisable2=true"
+          >查看数据</el-button>
         </template>
       </el-table-column>
     </el-table>
@@ -107,6 +110,6 @@
 <script>
 import wv from "../../overview/wxview.vue";
 let app = require("./jdlist.js");
-app.components = { wv};
+app.components = { wv };
 export default app;
 </script>

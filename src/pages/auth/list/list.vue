@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="panel-start wrap">
+    <div class="panel-start">
       <el-input
         v-for="(item,index) in searchList"
         v-model="item.value"

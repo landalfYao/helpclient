@@ -105,7 +105,7 @@ const yzy = {
     });
   },
   //getToken
-  getToken(cb) { 
+  getToken(cb) {
     this.http(
       "user/login",
       "POST", {
@@ -121,7 +121,7 @@ const yzy = {
         }
       }
     );
-  
+
   },
   //post
   post(url, data, cb) {

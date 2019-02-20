@@ -64,6 +64,28 @@
       <el-form-item label="平台收益">
         <el-input v-model="formData.p_sy" type="number" placeholder="平台收益" :disabled="dtype != 1 "></el-input>
       </el-form-item>
+      <el-form-item
+        label="标签"
+        v-if="formData.server_name == '上门维修' || formData.server_name == '校园跑腿' || formData.server_name == '代替服务'"
+      >
+        <el-tag
+          :key="tag"
+          v-for="tag in dynamicTags"
+          closable
+          :disable-transitions="false"
+          @close="handleClose(tag)"
+        >{{tag}}</el-tag>
+        <el-input
+          class="input-new-tag"
+          v-if="inputVisible"
+          v-model="inputValue"
+          ref="saveTagInput"
+          size="small"
+          @keyup.enter.native="handleInputConfirm"
+          @blur="handleInputConfirm"
+        ></el-input>
+        <el-button v-else class="button-new-tag" size="small" @click="showInput">+ 新增标签</el-button>
+      </el-form-item>
       <el-form-item label="描述">
         <el-input v-model="formData.des" placeholder="描述"></el-input>
       </el-form-item>
@@ -93,6 +115,23 @@
     </el-dialog>
   </div>
 </template>
+<style>
+.el-tag + .el-tag {
+  margin-left: 10px;
+}
+.button-new-tag {
+  margin-left: 10px;
+  height: 32px;
+  line-height: 30px;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+.input-new-tag {
+  width: 90px;
+  margin-left: 10px;
+  vertical-align: bottom;
+}
+</style>
 <script>
 import jd from "../wxuser/jdlist/jdlist.vue";
 let app = require("./server.js");
