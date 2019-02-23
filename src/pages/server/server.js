@@ -93,7 +93,7 @@ let list = {
 
     onSubmit() {
 
-      if (this.formData.dl_id != '' && this.formData.server_name != '' && this.formData.dl_sy != '' && this.formData.user_sy != '' && this.formData.p_sy != '') {
+      if (this.formData.dl_id != '' && this.formData.server_name != ''  && this.formData.p_sy != '') {
         this.loading = true
         if (this.formData.server_name == '快递代取' || this.formData.server_name == '打印服务') {
           this.formData.price_gui = this.price.toString()
