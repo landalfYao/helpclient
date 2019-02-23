@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="panel-start wrap">
+    <div class="panel-start">
       <el-input
         v-for="(item,index) in searchList"
         v-model="item.value"
@@ -18,7 +18,7 @@
     <div style="margin-top:15px">
       <div class="panel-between item-center">
         <el-button-group>
-          <el-button type="danger" plain icon="el-icon-delete"  @click="del()"></el-button>
+          <el-button type="danger" plain icon="el-icon-delete" @click="del()"></el-button>
         </el-button-group>
         <el-select
           v-model="query.pageSize"
@@ -50,7 +50,7 @@
       <el-table-column prop="id" label="ID"></el-table-column>
       <el-table-column prop="name" label="名称"></el-table-column>
       <el-table-column prop="cate_id" label="分组ID"></el-table-column>
-   
+
       <el-table-column label="操作">
         <template slot-scope="scope">
           <el-button type="text" @click="navTo('/address_edit',scope.row)">修改</el-button>

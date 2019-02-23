@@ -6,6 +6,9 @@ let list = {
       is_show: false,
       api: this.yzy.NODE_API,
       urls: [{
+        label: '文章详情页',
+        path: '/pages/richtext/richtext'
+      },{
           label: '关于我们',
           path: '/pages/mine/about/about'
         },

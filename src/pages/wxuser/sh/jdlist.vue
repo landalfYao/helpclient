@@ -1,8 +1,7 @@
 <template>
   <div>
-    <div class="panel-start wrap">
+    <div class="panel-start">
       <el-input
-        placeholder="搜索"
         v-for="(item,index) in searchList"
         v-model="item.value"
         :placeholder="item.label"

@@ -2,6 +2,9 @@ let that;
 let list = {
   data() {
     return {
+      dynamicTags: [],
+      inputVisible: false,
+      inputValue: '',
       dialogVisible: false,
       jdr: [],
       dtype: sessionStorage.getItem('dtype'),
@@ -14,7 +17,8 @@ let list = {
         user_sy: '',
         p_sy: '',
         is_show: 1,
-        des: ''
+        des: '',
+        tags: ''
       },
       formData2: {
         jdr: '',
@@ -24,7 +28,8 @@ let list = {
         user_sy: '',
         p_sy: '',
         is_show: 1,
-        des: ''
+        des: '',
+        tags: ''
       },
       utype: [{
         label: '快递代取'
@@ -49,6 +54,25 @@ let list = {
     }
   },
   methods: {
+    handleClose(tag) {
+      this.dynamicTags.splice(this.dynamicTags.indexOf(tag), 1);
+    },
+
+    showInput() {
+      this.inputVisible = true;
+      this.$nextTick(_ => {
+        this.$refs.saveTagInput.$refs.input.focus();
+      });
+    },
+
+    handleInputConfirm() {
+      let inputValue = this.inputValue;
+      if (inputValue) {
+        this.dynamicTags.push(inputValue);
+      }
+      this.inputVisible = false;
+      this.inputValue = '';
+    },
     getJd() {
       this.jdr = [global.tempJd.avatar_url, global.tempJd.name, global.tempJd.openid, global.tempJd.id]
     },
@@ -62,7 +86,7 @@ let list = {
             that.price = res.data[0].price_gui.split(',')
           }
           that.jdr = res.data[0].jdr ? res.data[0].jdr.split(',') : []
-
+          that.dynamicTags = res.data[0].tags.split(',') || []
         }
       })
     },
@@ -77,6 +101,7 @@ let list = {
           this.formData.price_gui = false
         }
         this.formData.jdr = this.jdr.toString()
+        this.formData.tags = this.dynamicTags.toString()
         let url = 'add'
         if (this.$route.query.id) {
           url = 'update'
@@ -86,7 +111,7 @@ let list = {
           if (res.code == 1) {
             that.$message.success(res.msg)
 
-            if (this.$route.query.id) {
+            if (that.$route.query.id) {
               that.$router.go(-1)
             } else {
               that.formData = that.formData2

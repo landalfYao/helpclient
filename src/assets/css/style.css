@@ -1,27 +1,29 @@
-.container{
+.container {
   width: 100%;
   background: #f3f3f3;
   position: absolute;
   top: 0;
   left: 0;
 }
-.container > .header{
+
+.container>.header {
   width: 100%;
   background: #ffffff;
   height: 60px;
 }
 
 
-.container > .header > .header-panel{
+.container>.header>.header-panel {
   width: 1300px;
   margin: auto;
   height: 60px;
 }
 
-.container > .main{
+.container>.main {
   padding: 20px;
 }
-.container > .main > .main-panel{
+
+.container>.main>.main-panel {
   width: 1300px;
   margin: auto;
   background: #fff;
@@ -30,33 +32,39 @@
   padding-left: 0;
 
 }
-.main-left{
+
+.main-left {
   width: 200px;
   height: 100%;
 }
-.main-right{
+
+.main-right {
   width: 1080px;
   margin-left: 20px;
 }
-.main-right-top{
+
+.main-right-top {
   height: 50px;
   border-bottom: 1px solid #e1e1e1
 }
-.main-right-panel{
+
+.main-right-panel {
   padding-top: 15px;
- 
+
 }
-.main-right-panel-o{
+
+.main-right-panel-o {
   width: 1097px;
   overflow-x: hidden;
   overflow-y: scroll
 }
-.el-menu-vertical{
+
+.el-menu-vertical {
   height: 100%;
 }
 
 
-.container > .footer{
+.container>.footer {
   height: 30px;
   width: 100%;
   line-height: 30px;
@@ -65,77 +73,90 @@
   text-align: center
 }
 
-.w-250{
+.w-250 {
   width: 250px;
 }
-.w-800{
+
+.w-800 {
   width: 800px
 }
-.dropdown-item{
+
+.dropdown-item {
   width: 150px;
   cursor: pointer;
   text-align: center
 }
-.fo-danger{
+
+.fo-danger {
   color: #F56C6C
 }
-.table-header{
+
+.table-header {
   line-height: normal;
   padding: 0
 }
-.filter-t{
+
+.filter-t {
   height: 30px;
   width: 55px;
   border-right: 1px solid #e1e1e1;
 
 }
-.filter-input{
+
+.filter-input {
   margin-right: 5px;
-  width: 150px
+  width: 150px;
+  display: inline-block;
 }
 
-.show-code{
+.show-code {
   width: 190px;
   height: 200px;
   border: 1px solid #e1e1e1
 }
 
-.opanl{
+.opanl {
   width: 207.5px;
   margin-right: 15px;
-  height:180px;
+  height: 180px;
   box-shadow: 0 0 5px 1px #f3f3f3;
   display: flex;
   justify-content: center;
   align-items: center;
 }
-.eol{
+
+.eol {
   width: 870px;
   box-shadow: 0 0 10px 1px #f3f3f3;
   padding: 15px;
   margin-left: 5px
 }
-.obg1{
+
+.obg1 {
   background-image: linear-gradient(152deg,
-		#00FF99 0%,
-		#00CC99 100%);
+    #00FF99 0%,
+    #00CC99 100%);
 }
-.obg2{
+
+.obg2 {
   background-image: linear-gradient(152deg,
-		#00ccff 0%,
-		#0099CC 100%);
+    #00ccff 0%,
+    #0099CC 100%);
 }
-.obg3{
+
+.obg3 {
   background-image: linear-gradient(152deg,
-		#9999FF 0%,
-		#9966FF 100%);
+    #9999FF 0%,
+    #9966FF 100%);
 }
-.obg4{
+
+.obg4 {
   background-image: linear-gradient(152deg,
-		#FF9933 0%,
-		#ff6633 100%);
+    #FF9933 0%,
+    #ff6633 100%);
 }
-.icon-ss{
+
+.icon-ss {
   width: 50px;
   height: 50px;
   border-radius: 50px;
@@ -144,7 +165,8 @@
   justify-content: center;
   align-items: center
 }
-.mes-box{
+
+.mes-box {
   width: 300px;
   height: 200px;
   box-shadow: 0 0 10px 1px #f3f3f3;
@@ -152,20 +174,25 @@
   margin-top: 15px;
   overflow: hidden;
 }
-.mes-box:hover,.mes-box2:hover{
+
+.mes-box:hover,
+.mes-box2:hover {
   box-shadow: 0 0 10px 2px #e1e1e1;
 }
-.pkl{
+
+.pkl {
   width: 320px;
   height: 180px;
-  overflow-y:scroll
+  overflow-y: scroll
 }
-.pkl2{
+
+.pkl2 {
   width: 580px;
   height: 180px;
-  overflow-y:scroll
+  overflow-y: scroll
 }
-.mes-box2{
+
+.mes-box2 {
   width: 555px;
   height: 200px;
   box-shadow: 0 0 10px 1px #f3f3f3;
@@ -173,11 +200,13 @@
   margin-top: 15px;
   overflow: hidden;
 }
-.box-link{
+
+.box-link {
   width: 875px;
   margin-top: 15px
 }
-.box-btn{
+
+.box-btn {
   width: 100px;
   height: 50px;
   line-height: 50px;
@@ -187,28 +216,34 @@
   cursor: pointer;
   margin-right: 5px
 }
-.calendar-l{
+
+.calendar-l {
   width: 200px
 }
-.operate-panel{
+
+.operate-panel {
   height: 55px;
   background: #f3f3f3;
   width: 100%;
   padding: 0 20px
 }
-.gallery_meun{
+
+.gallery_meun {
   width: 150px
 }
-.gallery-panel{
-  width:870px
+
+.gallery-panel {
+  width: 870px
 }
-.kupa{
+
+.kupa {
   padding: 20px 15px;
   padding-right: 0;
   height: 460px;
   overflow: hidden;
 }
-.kupa-item{
+
+.kupa-item {
   width: 158px;
   height: 200px;
   background: #e1e1e1;
@@ -218,7 +253,8 @@
   overflow: hidden;
   cursor: pointer;
 }
-.kuit-txt{
+
+.kuit-txt {
   height: 42px;
   width: 100%;
   padding: 0 5px;
@@ -226,22 +262,26 @@
   justify-content: space-between;
   align-items: center
 }
-.kuit-img{
+
+.kuit-img {
   background-size: cover;
   background-position: center;
   width: 158px;
   height: 158px;
 }
-.kucheck{
+
+.kucheck {
   width: 158px;
   height: 200px;
-  background-color: rgba(0,0,0,0.5);
+  background-color: rgba(0, 0, 0, 0.5);
   position: relative;
   top: -200px
 }
-.spin-ku{
-  width:100%;height:460px;
+
+.spin-ku {
+  width: 100%;
+  height: 460px;
   position: relative;
   top: -460px;
-  background: rgba(255,255,255,0.7)
+  background: rgba(255, 255, 255, 0.7)
 }

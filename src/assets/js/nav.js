@@ -185,7 +185,11 @@ const nav = {
         icon: "ios-podium-outline"
       }, {
         label: "富文本",
-        path: "/richtext",
+        path: "/richtext/list",
+        icon: "ios-podium-outline"
+      }, {
+        label: "富文本编辑",
+        path: "/richtext/edit",
         icon: "ios-podium-outline"
       }]
     },
