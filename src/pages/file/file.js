@@ -13,7 +13,7 @@ let list = {
       pageSize: this.yzy.pageSize,
       total: 0,
       tableData: [],
-      searchList: this.yzy.initFilterSearch(['ID', '微信ID','a_id'], ['id', 'wx_id', 'a_id'])
+      searchList: this.yzy.initFilterSearch(['ID', '微信ID', 'a_id', '删除状态', '文件状态'], ['id', 'wx_id', 'a_id', 'is_delete', 'is_temp'])
     }
   },
   mounted() {
@@ -81,51 +81,72 @@ let list = {
 
       this.getList()
     },
-    changeUserState(state) {
 
-      if (state == 'disable') {
-        this.$confirm('此操作将使用户被迫下线, 是否继续?', '提示', {
-          confirmButtonText: '继续',
-          cancelButtonText: '取消',
-          type: 'warning'
-        }).then(() => {
-          that.update('user/state/' + state, {
-            ids: that.filterIds().toString()
-          })
-        }).catch(() => {
-          that.$message({
-            type: 'info',
-            message: '已取消删除'
-          });
-        });
-      } else {
-        that.update('user/state/' + state, {
-          ids: that.filterIds().toString()
-        })
-      }
-    },
     filterIds() {
       let arr = []
       for (let i in this.multipleSelection) {
-        arr.push(this.multipleSelection[i].pk_id)
+        arr.push(this.multipleSelection[i].id)
       }
       return arr
     },
-    update(url, data) {
-      this.yzy.post(url, data, function (res) {
-        if (res.code == 1) {
-          that.$message({
-            type: 'success',
-            message: res.msg
-          })
-          that.getList()
-        } else {
-          that.$message({
-            type: 'error',
-            message: res.msg
-          })
-        }
-      })
+
+    changeTemp() {
+      this.$confirm('此操作将永久该改变该文件, 是否继续?', '提示', {
+        confirmButtonText: '确定',
+        cancelButtonText: '取消',
+        type: 'warning'
+      }).then(() => {
+        that.yzy.post('file/temp', {
+          id: that.filterIds()
+        }, function (res) {
+          if (res.code == 1) {
+            that.$message({
+              type: 'success',
+              message: res.msg
+            })
+            that.getList()
+          } else {
+            that.$message({
+              type: 'error',
+              message: res.msg
+            })
+          }
+        })
+      }).catch(() => {
+        this.$message({
+          type: 'info',
+          message: '已取消改变'
+        });
+      });
+    },
+    del() {
+      this.$confirm('此操作将永久删除该文件, 是否继续?', '提示', {
+        confirmButtonText: '确定',
+        cancelButtonText: '取消',
+        type: 'warning'
+      }).then(() => {
+        that.yzy.post('file/del', {
+          id: that.filterIds()
+        }, function (res) {
+          if (res.code == 1) {
+            that.$message({
+              type: 'success',
+              message: res.msg
+            })
+            that.getList()
+          } else {
+            that.$message({
+              type: 'error',
+              message: res.msg
+            })
+          }
+        })
+      }).catch(() => {
+        this.$message({
+          type: 'info',
+          message: '已取消删除'
+        });
+      });
     },
     searchInput(index) {
       this.wheres = this.yzy.filterSearch(this.searchList[index], this.wheres)

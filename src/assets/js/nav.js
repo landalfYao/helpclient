@@ -61,19 +61,20 @@ const nav = {
       label: "微信用户",
       dtype: 1,
       sub: [{
-        label: "用户列表",
-        path: "/wxuser_LIST",
-        icon: "ios-podium-outline"
-      },{
-        label: "接单员列表",
-        path: "/jdlist",
-        icon: "ios-list-box-outline"
-      },
-      {
-        label: "审核列表",
-        path: "/shlist",
-        icon: "ios-list-box-outline"
-      }]
+          label: "用户列表",
+          path: "/wxuser_LIST",
+          icon: "ios-podium-outline"
+        }, {
+          label: "接单员列表",
+          path: "/jdlist",
+          icon: "ios-list-box-outline"
+        },
+        {
+          label: "审核列表",
+          path: "/shlist",
+          icon: "ios-list-box-outline"
+        }
+      ]
     },
     {
       label: "订单管理",
@@ -149,12 +150,17 @@ const nav = {
     }, {
       label: "日志管理",
       sub: [{
-          label: "日志列表",
-          path: "/user/log",
-          icon: "ios-person-outline"
-        },
-
-      ]
+        label: "日志列表",
+        path: "/user/log",
+        icon: "ios-person-outline"
+      }, ]
+    }, {
+      label: "文件管理",
+      sub: [{
+        label: "文件列表",
+        path: "/file",
+        icon: "ios-person-outline"
+      }, ]
     }
   ],
   item3: [{

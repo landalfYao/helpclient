@@ -2,7 +2,6 @@
   <div>
     <div class="panel-start wrap">
       <el-input
-        placeholder="搜索"
         v-for="(item,index) in searchList"
         v-model="item.value"
         :placeholder="item.label"
@@ -19,9 +18,8 @@
     <div style="margin-top:15px">
       <div class="panel-between item-center">
         <el-button-group>
-          <el-button type="danger" plain icon="el-icon-delete"></el-button> 
-          <!-- <el-button type="success" plain @click="changeUserState('available')">启用用户</el-button>
-          <el-button type="warning" plain @click="changeUserState('disable')">禁用用户</el-button>-->
+          <el-button type="danger" plain icon="el-icon-delete" @click="del()"></el-button>
+          <el-button type="success" plain @click="changeTemp()">清除临时文件</el-button>
         </el-button-group>
         <el-select
           v-model="query.pageSize"
@@ -51,16 +49,25 @@
     >
       <el-table-column type="selection" width="55"></el-table-column>
       <el-table-column prop="id" label="ID" width="55"></el-table-column>
-      <el-table-column label="文件名" prop="realname" ></el-table-column>
+      <el-table-column label="文件名" prop="realname"></el-table-column>
       <el-table-column label="类型" prop="type"></el-table-column>
-      <el-table-column prop="size" label="大小"> 
+      <el-table-column prop="size" label="大小">
         <template slot-scope="scope">
           <div>{{scope.row.size/1024 < 1024 ? (scope.row.size/1024)+'kb':(scope.row.size/1024/1024)+'mb'}}</div>
         </template>
       </el-table-column>
-      <el-table-column prop="信息" label="操作">
+      <el-table-column label="状态">
         <template slot-scope="scope">
-          <div>1</div>
+          <el-tag
+            :type="scope.row.is_temp == 1 ? 'warning':'success'"
+          >{{scope.row.is_temp == 1?'临时文件':'已使用'}}</el-tag>
+        </template>
+      </el-table-column>
+      <el-table-column label="是否删除">
+        <template slot-scope="scope">
+          <el-tag
+            :type="scope.row.is_delete == 1 ? 'success':'danger'"
+          >{{scope.row.is_delete == 1?'已删除':'没删除'}}</el-tag>
         </template>
       </el-table-column>
     </el-table>
