@@ -12,6 +12,7 @@
       <el-button-group>
         <el-button type="ghost" @click="clear()">清除</el-button>
         <el-button type="primary" @click="search()">搜索</el-button>
+        <el-button type="ghost" @click="getList()">刷新</el-button>
       </el-button-group>
     </div>
 

@@ -12,6 +12,7 @@
       <el-button-group>
         <el-button type="ghost" @click="clear()">清除</el-button>
         <el-button type="primary" @click="search()">搜索</el-button>
+        <el-button type="ghost" @click="getList()">刷新</el-button>
       </el-button-group>
     </div>
 
@@ -52,6 +53,7 @@
       <el-table-column prop="nick_name" label="下单用户"></el-table-column>
       <el-table-column prop="phone" label="手机号"></el-table-column>
       <el-table-column prop="dphone" label="短号"></el-table-column>
+      <el-table-column prop="title" label="类型"></el-table-column>
       <el-table-column prop="des" label="信息"></el-table-column>
       <el-table-column prop="mu" label="目的地"></el-table-column>
       <el-table-column prop="total_fee" label="已支付"></el-table-column>
