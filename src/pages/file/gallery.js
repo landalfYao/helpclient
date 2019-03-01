@@ -171,9 +171,10 @@ let list = {
     getFile() {
       this.listload = true;
       this.yzy.post('ptfile/get', {
-        pageSize: 20,
+        pageSize: 10,
         pageIndex: this.page,
-        group_id: this.group_id
+        group_id: this.group_id,
+        sorts:'create_time desc'
       }, function (res) {
         that.listload = false;
         if (res.code == 1) {

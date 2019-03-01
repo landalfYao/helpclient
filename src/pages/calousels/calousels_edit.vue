@@ -45,7 +45,7 @@
         <el-button type="primary" @click="onSubmit" :loading="loading">确认提交</el-button>
       </el-form-item>
     </el-form>
-    <el-dialog :visible.sync="centerDialogVisible" width="1000px" center>
+    <el-dialog :visible.sync="centerDialogVisible" width="1100px" center>
       <gallery :clear="clear"></gallery>
       <span slot="footer" class="dialog-footer">
         <el-button @click="centerDialogVisible = false">取 消</el-button>

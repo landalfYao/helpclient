@@ -173,14 +173,14 @@
         <el-button style="margin-top:100px" type="primary" @click="onSubmit" :loading="loading">确认提交</el-button>
       </el-form-item>
     </el-form>
-    <el-dialog :visible.sync="dialogTableVisible" width="1000px">
+    <el-dialog :visible.sync="dialogTableVisible" width="1100px">
           <imageval :clear="clear" style="margin-top:-40px"></imageval>
           <div slot="footer" class="dialog-footer">
             <el-button @click="dialogTableVisible = false">取 消</el-button>
             <el-button type="primary" @click="getModelImgs()">确 定</el-button>
         </div>
       </el-dialog>
-      <el-dialog :visible.sync="dialogTableVisible2" width="1000px" center>
+      <el-dialog :visible.sync="dialogTableVisible2" width="1100px" center>
         <imageval :clear="clear"></imageval>
         <span slot="footer" class="dialog-footer">
             <el-button @click="dialogTableVisible2 = false">取 消</el-button>

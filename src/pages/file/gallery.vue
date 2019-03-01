@@ -64,7 +64,7 @@
                   @size-change="handleSizeChange"
                   @current-change="handleCurrentChange"
                   :current-page.sync="page"
-                  :page-size="20"
+                  :page-size="10"
                   layout="total,prev, pager, next, jumper"
                   :total="total"
                   style="margin-top:15px"
