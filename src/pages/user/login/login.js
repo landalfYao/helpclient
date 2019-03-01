@@ -43,7 +43,7 @@ let login = {
             })
             sessionStorage.setItem('token', res.token)
             sessionStorage.setItem('uid', res.data.pk_id)
-            global.uid = res.data.res.data.pk_id
+            global.uid = res.data.pk_id
             sessionStorage.setItem('userInfo', res.data)
             sessionStorage.setItem('username', res.data.username)
             global.pwd = pwd
