@@ -18,6 +18,14 @@
 
     <div style="margin-top:15px">
       <div class="panel-between item-center">
+        <div v-if="jdr.length != 0">
+          <div>接单人</div>
+          <div class="panel-start item-center">
+            <img :src="jdr[0]" width="30px" height="30px" alt>
+            <div class="ma-l10">{{jdr[1]}}</div>
+            <el-button type="text" class="ma-l10" @click="dialogVisible = true">更换接单人</el-button>
+          </div>
+        </div>
         <el-button-group>
           <!-- <el-button type="danger" plain icon="el-icon-delete"></el-button> -->
           <!-- <el-button type="success" plain @click="changeUserState('available')">接单</el-button>-->
@@ -82,9 +90,18 @@
         style="margin-top:15px"
       ></el-pagination>
     </div>
+    <el-dialog title="接单员信息" :visible.sync="dialogVisible" width="900px">
+      <wxuser></wxuser>
+      <span slot="footer" class="dialog-footer">
+        <el-button @click="dialogVisible = false">取 消</el-button>
+        <el-button type="primary" @click="changeJd(),dialogVisible = false">确 定</el-button>
+      </span>
+    </el-dialog>
   </div>
 </template>
 <script>
 let app = require("./other.js");
+import wxuser from "../wxuser/jdlist/jdlist.vue";
+app.components = { wxuser };
 export default app;
 </script>

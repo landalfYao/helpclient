@@ -19,7 +19,7 @@ let main = {
     $route() {
       this.linkName = this.$route.name
     },
-   
+
   },
   mounted() {
     document.title = this.yzy.systemName;

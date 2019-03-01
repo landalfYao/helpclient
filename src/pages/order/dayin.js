@@ -6,6 +6,7 @@ let list = {
       jdr: [],
       seevisable: false,
       multipleSelection: [],
+      dialogVisible: false,
       query: {
         fields: 'helplist.*,wxuser.phone,wxuser.dphone,wxuser.avatar_url,wxuser.nick_name',
         wheres: '',
@@ -26,7 +27,10 @@ let list = {
     that.getJDUser()
   },
   methods: {
-    wcclick(id){
+    changeJd() {
+      this.jdr = [global.tempJd.avatar_url, global.tempJd.name, global.tempJd.openid, global.tempJd.id]
+    },
+    wcclick(id) {
       this.yzy.post('help/confirm', {
         id: id,
       }, function (res) {

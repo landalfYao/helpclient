@@ -3,6 +3,7 @@ let list = {
 
   data() {
     return {
+      jdr: [],
       tempUid: '',
       seevisable: false,
       multipleSelection: [],
@@ -13,6 +14,7 @@ let list = {
         pageIndex: 1,
         pageSize: 10
       },
+      dialogVisible: false,
       wheres: [],
       pageSize: this.yzy.pageSize,
       total: 0,
@@ -26,7 +28,10 @@ let list = {
     that.getJDUser()
   },
   methods: {
-    wcclick(id){
+    changeJd() {
+      this.jdr = [global.tempJd.avatar_url, global.tempJd.name, global.tempJd.openid, global.tempJd.id]
+    },
+    wcclick(id) {
       this.yzy.post('help/confirm', {
         id: id,
       }, function (res) {
