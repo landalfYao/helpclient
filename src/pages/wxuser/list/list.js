@@ -13,7 +13,7 @@ let list = {
       pageSize: this.yzy.pageSize,
       total: 0,
       tableData: [],
-      searchList: this.yzy.initFilterSearch(['ID', '昵称', '手机号', '短号'], ['id', 'nick_name', 'phone', 'dphone'])
+      searchList: this.yzy.initFilterSearch(['ID', '昵称', '手机号', '短号', '性别'], ['id', 'nick_name', 'phone', 'dphone', 'gender'])
     }
   },
   mounted() {
@@ -28,11 +28,12 @@ let list = {
           sq += this.wheres[i].value + ' and '
         }
       }
-      if (sq != '') {
-        this.query.wheres = sq.substring(0, sq.length - 4)
-      } else {
-        this.query.wheres = ''
-      }
+      this.query.wheres += ' phone not null '
+      // if (sq != '') {
+      //   this.query.wheres = sq.substring(0, sq.length - 4)
+      // } else {
+      //   this.query.wheres = ''
+      // }
       this.yzy.post('wx/user/get', this.query, function (res) {
         if (res.code == 1) {
 

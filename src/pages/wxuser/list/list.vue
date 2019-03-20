@@ -67,6 +67,15 @@
           <div>{{scope.row.nick_name ? scope.row.nick_name:'未授权'}}</div>
         </template>
       </el-table-column>
+      <el-table-column label="性别">
+        <template slot-scope="scope">
+          <div>
+            <el-tag type="primary" v-if="scope.row.gender == 1">男</el-tag>
+            <el-tag type="success" v-if="scope.row.gender == 2">女</el-tag>
+            <el-tag type="warning" v-if="scope.row.gender != 2 && scope.row.gender != 1">未知</el-tag>
+          </div>
+        </template>
+      </el-table-column>
       <el-table-column prop="phone" label="手机号">
         <template slot-scope="scope">
           <div>{{scope.row.phone ? scope.row.phone:'未注册'}}</div>
