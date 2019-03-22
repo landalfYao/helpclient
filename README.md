@@ -6,11 +6,11 @@
 
 #### 安装教程
 
-#####1.安装依赖并启动
+1.安装依赖并启动
 
 ```
 npm install
-npm start
+npm run dev
 ```
 
 访问[http://localhost:3336](http://localhost:3336)
