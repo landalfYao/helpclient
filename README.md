@@ -1,8 +1,9 @@
 # 校园综合服务平台小程序后台客户端
 
-#### 软件架构
-
-软件架构说明
+#### 项目链接
+本项目配合以下两端使用：<br>
+[1.后台服务端地址：https://github.com/landalfYao/helpserver.git](https://github.com/landalfYao/helpserver.git)<br>
+[2.小程序端地址：https://github.com/landalfYao/help.git](https://github.com/landalfYao/help.git)<br>
 
 #### 安装教程
 
