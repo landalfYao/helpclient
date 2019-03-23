@@ -13,6 +13,10 @@
 npm install
 npm run dev
 ```
+2.登录初始密码
+```
+qwe123123
+```
 
 访问[http://localhost:3336](http://localhost:3336)
 
