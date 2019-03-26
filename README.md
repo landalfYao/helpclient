@@ -33,10 +33,10 @@ const yzy = {
 ```
 npm run build
 ```
-导出的文件在dist目录下
-3.进入dist目录有两个文件 dist和index.html,将index.html拖到dist中。
-4.讲dist目录下的dist拖到服务端public目录下
-访问服务端 "https://api.demo.com/dist"
+导出的文件在dist目录下<br>
+3.进入dist目录有两个文件 dist和index.html,将index.html拖到dist中。<br>
+4.讲dist目录下的dist拖到服务端public目录下<br>
+访问服务端 "https://api.demo.com/dist"<br>
 #### 交流
 微信号:landalfyzy<br>
 ![输入图片说明](https://images.gitee.com/uploads/images/2019/0320/102250_efc7b2d0_1930998.jpeg "微信图片_20190320102141.jpg")
