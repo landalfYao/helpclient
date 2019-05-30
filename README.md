@@ -20,9 +20,28 @@ qwe123123
 
 访问[http://localhost:3336](http://localhost:3336)
 
+#### 线上部署
+1.打开文件 src/assets/js/yzy.js
+```
+const yzy = {
+  ...
+  NODE_API: "https://api.demo.com/api/",  //改成自己服务器地址
+  ...
+}
+```
+2.打包导出
+```
+npm run build
+```
+导出的文件在dist目录下<br>
+3.进入dist目录有两个文件 dist和index.html,将index.html拖到dist中。<br>
+4.讲dist目录下的dist拖到服务端public目录下<br>
+访问服务端 "https://api.demo.com/dist"<br>
 #### 交流
 微信号:landalfyzy<br>
 ![输入图片说明](https://images.gitee.com/uploads/images/2019/0320/102250_efc7b2d0_1930998.jpeg "微信图片_20190320102141.jpg")
 <br>
 QQ群<br>
 ![输入图片说明](https://images.gitee.com/uploads/images/2019/0325/100055_4cc3cea8_1930998.png "微信截图_20190325095959.png")
+#### 付费服务
+人工服务端部署服务：提供后台服务端和后台客户端项目部署，直至成功运行为止。需要提供服务请加微信。
