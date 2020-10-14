@@ -26,7 +26,7 @@
       <el-input v-model="formData.phone" placeholder="手机号"></el-input>
     </el-form-item>
     <el-form-item label="代理期限" v-if="formData.dtype == 2">
-      <el-date-picker v-model="formData.deadline" style="width:100%" type="date" placeholder="选择日期"></el-date-picker>
+      <el-date-picker v-model="formData.deadline" style="width:100%" type="date" placeholder="选择日期" value-format="yyyy-MM-dd HH:mm:ss" format="yyyy-MM-dd HH:mm:ss"></el-date-picker>
     </el-form-item>
     <el-form-item>
       <el-button type="primary" @click="onSubmit" :loading="loading">立即注册</el-button>
