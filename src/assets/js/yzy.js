@@ -10,7 +10,7 @@ const request = require("request");
 const yzy = {
   systemName: "互帮互助管理系统",
 
-  NODE_API: "https://api.hbhzdtn.com/api/",
+  NODE_API: "https://uwun.xingchen999.club/api/",
 
   pageSize: [{
       label: "每页10条",

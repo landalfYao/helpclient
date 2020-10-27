@@ -60,19 +60,9 @@
       <el-table-column prop="order_num" label="订单编号"></el-table-column>
       <el-table-column prop="nick_name" label="下单用户"></el-table-column>
       <el-table-column prop="phone" label="手机号"></el-table-column>
-      <el-table-column prop="dphone" label="短号"></el-table-column>
-      <el-table-column prop="des" label="信息"></el-table-column>
       <el-table-column prop="mu" label="目的地"></el-table-column>
-      <el-table-column prop="file" label="文件名"></el-table-column>
-      <el-table-column prop="page" label="页数" width="55"></el-table-column>
-      <el-table-column label="印刷">
-        <template slot-scope="scope">
-          <el-tag
-            size="mini"
-            :type="scope.row.cai == 1 ? 'success':'info'"
-          >{{scope.row.cai == 1 ? '彩印':'黑白'}}</el-tag>
-        </template>
-      </el-table-column>
+      <el-table-column prop="help_name" label="姓名"></el-table-column>
+      <el-table-column prop="help_phone" label="联系电话"></el-table-column>
       <el-table-column prop="total_fee" label="已支付"></el-table-column>
       <el-table-column label="状态" column-key="state">
         <template slot-scope="scope">
