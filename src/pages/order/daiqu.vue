@@ -63,6 +63,7 @@
       <el-table-column prop="dphone" label="短号"></el-table-column>
       <el-table-column prop="des" label="信息"></el-table-column>
       <el-table-column prop="mu" label="目的地"></el-table-column>
+      <el-table-column prop="help_name" label="收货人姓名"></el-table-column>
       <el-table-column prop="total_fee" label="已支付"></el-table-column>
       <el-table-column label="状态" column-key="state">
         <template slot-scope="scope">
