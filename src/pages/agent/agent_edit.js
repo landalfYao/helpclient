@@ -38,8 +38,8 @@ let list = {
       this.loading = true
       let formData = {
         username: this.formData.username,
-        password: this.yzy.encrypt(this.formData.password),
-        checkPwd: this.yzy.encrypt(this.formData.checkPwd),
+        password:this.formData.password,
+        checkPwd: this.formData.checkPwd,
         a_id: this.formData.a_id,
         dtype: this.formData.dtype,
         phone: this.formData.phone,
