@@ -169,8 +169,8 @@ let list = {
         color: '#0099CC'
       },
       {
-        label: '联系站长',
-        value: '18267173607',
+        label: '开 源 版 本',
+        value: '免费版',
         icon: 'ios-calendar',
         color: '#0099CC'
       },
@@ -226,7 +226,7 @@ let list = {
       });
     },
     orderNodeData(data) {
-      
+
       chart.source(data);
       chart.tooltip({
         follow: false,

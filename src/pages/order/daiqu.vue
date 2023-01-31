@@ -57,7 +57,7 @@
       @filter-change="filterChange"
     >
       <el-table-column type="selection" width="55"></el-table-column>
-      <el-table-column prop="order_num" label="订单编号"></el-table-column>
+     <el-table-column prop="order_num" label="订单编号"></el-table-column>
       <el-table-column prop="nick_name" label="下单用户"></el-table-column>
       <el-table-column prop="phone" label="手机号"></el-table-column>
       <el-table-column prop="dphone" label="短号"></el-table-column>

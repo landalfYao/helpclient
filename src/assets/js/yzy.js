@@ -8,10 +8,9 @@ const ivkey = Buffer.from("15464336451324535212156486623224", "utf8").toString(
 const request = require("request");
 
 const yzy = {
-  systemName: "互帮互助管理系统",
+  systemName: "校园综合服务平台",
 
-  NODE_API: "https://api.hbhzdtn.com/api/",
-
+  NODE_API: "http://paotui.dianpao.com.cn/api/",
   pageSize: [{
       label: "每页10条",
       value: 10

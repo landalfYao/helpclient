@@ -4,7 +4,7 @@
       <el-upload
         class="avatar-uploader"
         style="margin:auto"
-        :action="api+'file/upload'"
+        :action="'https://hapi.ypyzy.top/api/file/upload'"
         :show-file-list="true"
         :data="{wx_id:wx_id}"
         :before-upload="bup"

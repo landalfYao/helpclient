@@ -86,7 +86,7 @@
         </div>
       </div>
     </div>
-    <div class="footer">湖州叮点网络科技有限公司 2018</div>
+    <div class="footer">校园综合服务平台开源版本 2023</div>
   </div>
 </template>
 <script>
