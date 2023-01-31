@@ -10,7 +10,7 @@ const request = require("request");
 const yzy = {
   systemName: "校园综合服务平台",
 
-  NODE_API: "http://localhost:3337/api/",
+  NODE_API: "http://localhost:3336/api/",
   pageSize: [{
       label: "每页10条",
       value: 10
