@@ -13,7 +13,7 @@
     "build": "node build/build.js"
   },
   "dependencies": {
-    "@antv/g2": "^3.4.10",
+    "@antv/g2": "^4.2.8",
     "element-ui": "^2.4.11",
     "iview": "^3.2.0-rc.2",
     "request": "^2.88.0",
